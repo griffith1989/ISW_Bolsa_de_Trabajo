@@ -29,11 +29,6 @@
                     <p>
                         Esta es una pagina con el fin de facilitar la busqueda de
                         un trabajo para los alumnos de la Universidad Tecnologica Metropolitana.
-                        
-                        <?php
-                        $rut = '17312069';
-                        $pass = '4e0a641fdb5a1d411da2c920476a9c73c61b88faf520d954677510da61db28a2';
-                        die($this->ws_dirdoc->verificar($rut,$pass));?>
                     </p>
                 </article>
                 <aside>

@@ -30,7 +30,8 @@ class Proyecto_isw extends CI_Controller {
     }
     function administrador_foro() {
         if (!empty($this->session_id)) {
-            $this->load->view('administrador/administrador_foro');
+            $query = $this->modelo_ingresar->ver_foro();
+            $this->load->view('administrador/administrador_foro',  compact("query"));
         } else {
             $this->load->view('welcome_message');
         }

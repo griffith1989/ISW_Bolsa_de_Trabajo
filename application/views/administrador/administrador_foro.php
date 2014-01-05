@@ -66,7 +66,36 @@
         <br>
         <section>
             <div id="texto_adm">
-                    <h1>Foro</h1> 
+                    <h1>Foro</h1>
+                    
+                    <?php echo validation_errors();?>
+                    <?= form_open(base_url()."proyecto_isw/administrador_trabajo") ?>
+                    <?php
+                        $titulo = array(
+                            'name' => 'titulo'
+                        );
+                        $comentario = array(
+                            'name' => 'comentario'
+                        )
+                    ?>
+                    <?= form_label('Titulo','titulo')?>
+                    <?= form_input($titulo)?>
+                    <?= form_label('Comentario','comentario')?>
+                    <?= form_input($comentario)?>
+                    <?= form_close()?>
+                    
+                    
+                    <?php foreach ($query as $query){?>
+                    <div id="foro">
+                        <div id="titulo">
+                            <h2><?php $query->Usuario ?></h2>
+                            <h3><?php $query->Permiso_Usuario ?></h3>
+                        </div>
+                        <div>
+                            11111
+                        </div>
+                    </div>
+                    <?php } ?>
             </div>
         </section>
     </div>

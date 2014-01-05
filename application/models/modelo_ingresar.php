@@ -93,6 +93,10 @@ class Modelo_ingresar extends CI_Model {
         $query = $this->db->select("Id_Trabajo")->from("Vacantes")->where("Id_Alumno =".$id)->get();
         return $query->result();
     }
+    function ver_foro(){
+        $query = $this->db->select("*")->from("Foro")->get();
+        return $query->result();
+    }
     function ver_administrador(){
         $query = $this->db->select("*")->from("Administrador")->get();
         return $query->result();

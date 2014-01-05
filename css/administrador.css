@@ -11,6 +11,9 @@
     margin-left: 0px;
     
 }
+#titulo{
+    background-color: #ccc;
+}
 #consultas
 {
     text-align: center;
