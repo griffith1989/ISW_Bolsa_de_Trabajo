@@ -29,10 +29,6 @@
                 <hgroup>
                     <h1>Ingresar</h1>
                 </hgroup>
-                <?php If ($this->session->flashdata('ControllerMesage') != '') { 
-                    echo $this->session->flashdata('ControllerMesage');
-                }
-?>
                 <?php echo validation_errors(); ?>
                 <?= form_open(base_url()."proyecto_isw/validar_ingreso")?>
                 <?php
@@ -50,15 +46,6 @@
                     );
                 ?>
                 
-                <?php
-                    if ( $this->session->flashdata('item') != '' )
-                    {
-                            ?>
-                    <p style="color: red;">
-                            <?php echo $this->session->flashdata('item'); ?>
-                    </p>
-                    
-                    <?php } ?>
                     <br><br>
                     <?= form_label('Usuario','Usuario')?>
                     <?= form_input($usuario)?><br>

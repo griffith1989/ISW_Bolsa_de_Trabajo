@@ -4,9 +4,6 @@
     <meta charset = "UTF-8" />
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/style.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar.css">
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
     <div id="encabezado">
@@ -32,7 +29,11 @@
                     <p>
                         Esta es una pagina con el fin de facilitar la busqueda de
                         un trabajo para los alumnos de la Universidad Tecnologica Metropolitana.
-                        <?php echo($this->ws_dirdoc->autenticar('17312069','4e0a641fdb5a1d411da2c920476a9c73c61b88faf520d954677510da61db28a2'));?>
+                        
+                        <?php
+                        $rut = '17312069';
+                        $pass = '4e0a641fdb5a1d411da2c920476a9c73c61b88faf520d954677510da61db28a2';
+                        die($this->ws_dirdoc->verificar($rut,$pass));?>
                     </p>
                 </article>
                 <aside>

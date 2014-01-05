@@ -66,7 +66,7 @@
         <br>
         <section>
             <div id="texto_adm">
-                    <h1>Foro</h1>
+                    <h1>Foro</h1> 
             </div>
         </section>
     </div>
