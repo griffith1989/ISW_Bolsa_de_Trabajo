@@ -198,14 +198,22 @@
                     ?> 
                     
                     <?php
-                    if ( $this->session->flashdata('item') != '' )
-                    {
-                            ?>
-                    <p style="color: red;">
-                            <?php echo $this->session->flashdata('item'); ?>
-                    </p>
-                    
-                    <?php } ?>
+                    $errorMsg = trim($this->session->flashdata('errorMsg'));
+
+                  if (!empty($errorMsg)) {
+
+                    ?>
+
+                        <p style="color: red;">
+
+                            <?php echo $errorMsg; ?>
+
+                        </p>
+
+
+
+                     <?php } ?>
+
                     
                     <br>_______Datos de Inicio____________________________________________________________________________________
                     <br><br>

@@ -45,7 +45,7 @@ class Administrador_crear extends CI_Controller {
                         $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
                     }
                     else{
-                        $this->session->set_flashdata('item', 'El usuario ya existe');
+                        $this->session->set_flashdata('errorMsg', 'El usuario ya existe');
                         $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
                     }
                 }
