@@ -94,13 +94,12 @@
                             <h5><?php echo $query->Permiso_Usuario ?></h5>
                             <h6><?php echo $query->Fecha_Posteo ?></h6>
                         </div>
-                        <br>
                         <div id="comentario">
                             <h2><?php echo $query->Titulo ?></h2>
                             <h4><?php echo $query->Mensaje ?></h4>
                         </div>
                     </div>
-                    <br><br>
+                    <br>
                     <?php } ?>
             </div>
         </section>

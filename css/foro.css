@@ -1,10 +1,20 @@
 #foro{
-    background-color: #EBF3EC;
-    border: solid;
-    border-color: #00620C;
     margin: 20px;
     border-radius: 10px;
+    background-color: #8dbdd8;
+    padding: 5px;
 }
-#titulo{
-    border-bottom: 10px;
+#datos{
+    color: #000;
+    background-color: #CDCDCD;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #888888;
+    padding: 5px;
+}
+#comentario{
+    color: #000;
+    background-color: #CDCDCD;
+    border-radius: 10px;
+    border: solid;
+    padding: 5px;
 }
