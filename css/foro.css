@@ -1,0 +1,10 @@
+#foro{
+    background-color: #EBF3EC;
+    border: solid;
+    border-color: #00620C;
+    margin: 20px;
+    border-radius: 10px;
+}
+#titulo{
+    border-bottom: 10px;
+}

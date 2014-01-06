@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
+    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/foro.css">
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
 </head>
@@ -69,7 +70,7 @@
                     <h1>Foro</h1>
                     
                     <?php echo validation_errors();?>
-                    <?= form_open(base_url()."proyecto_isw/administrador_trabajo") ?>
+                    <?= form_open(base_url()."proyecto_isw/administrador_resultado_foro") ?>
                     <?php
                         $titulo = array(
                             'name' => 'titulo'
@@ -81,20 +82,25 @@
                     <?= form_label('Titulo','titulo')?>
                     <?= form_input($titulo)?>
                     <?= form_label('Comentario','comentario')?>
-                    <?= form_input($comentario)?>
+                    <?= form_textarea($comentario)?>
+                    <?= form_submit('Aceptar','Aceptar')?>
                     <?= form_close()?>
                     
-                    
+                    <br>
                     <?php foreach ($query as $query){?>
                     <div id="foro">
-                        <div id="titulo">
-                            <h2><?php $query->Usuario ?></h2>
-                            <h3><?php $query->Permiso_Usuario ?></h3>
+                        <div id="datos">
+                            <h4>Usuario:<?php echo $query->Usuario ?></h4>
+                            <h5><?php echo $query->Permiso_Usuario ?></h5>
+                            <h6><?php echo $query->Fecha_Posteo ?></h6>
                         </div>
-                        <div>
-                            11111
+                        <br>
+                        <div id="comentario">
+                            <h2><?php echo $query->Titulo ?></h2>
+                            <h4><?php echo $query->Mensaje ?></h4>
                         </div>
                     </div>
+                    <br><br>
                     <?php } ?>
             </div>
         </section>

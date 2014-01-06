@@ -124,6 +124,9 @@ class Modelo_ingresar extends CI_Model {
     function agregar_trabajo($datos = array()){
         $this->db->insert("Trabajo", $datos);
     }
+    function agregar_foro($datos = array()){
+        $this->db->insert("Foro",$datos);
+    }
     function mostrar_administrador($usuario) {
         $where = "Usuario = '".$usuario."'";
         $query = $this->db->select("*")->from("Administrador")->where($where)->get();

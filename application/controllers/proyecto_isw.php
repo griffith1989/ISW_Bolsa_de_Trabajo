@@ -36,6 +36,29 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+    function administrador_resultado_foro(){
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+                $datestring = "%Y-%m-%d - %h:%i %a";
+                $fecha = mdate($datestring);
+                $formulario = array(
+                    'Usuario' => $this->session->userdata('usuario'),
+                    'Titulo' => $this->input->post('titulo'),
+                    'Mensaje' => $this->input->post('comentario'),
+                    'Permiso_Usuario' => $this->session->userdata('permiso'),
+                    'Fecha_Posteo' => $fecha
+                );
+                $this->modelo_ingresar->agregar_foro($formulario);
+                $query = $this->modelo_ingresar->ver_foro();
+                $this->load->view('administrador/administrador_foro',  compact("query"));
+            } 
+            else {
+                $this->load->view('administrador/administrador_foro');
+            }
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
     function administrador_trabajos() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_trabajo();
