@@ -90,7 +90,7 @@ class Modelo_ingresar extends CI_Model {
         return $query->result();
     }
     function ver_vacantes($id){
-        $query = $this->db->select("Id_Trabajo")->from("Vacantes")->where("Id_Alumno =".$id)->get();
+        $query = $this->db->select("Id_Trabajo")->from("Vacantes")->where("Id_Alumno =".$this->session->userdata('id'))->get();
         return $query->result();
     }
     function ver_foro(){

@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
+    <script src="<?php echo base_url(js/jquery.Rut.js)?>"></script>
+    <script src="<?php echo base_url(js/jquery.js)?>"></script>
 </head>
 <body>
     <div>
@@ -215,6 +215,16 @@
                      <?php } ?>
 
                     
+                        <script>
+           $.validator.addMethod("rut", function(value, element) {
+            return this.optional(element) || $.Rut.validar(value);
+          }, "Este campo debe ser un rut valido.");
+
+          $("#jq-validation").validate();
+
+            </script>
+            <input type="text" name="rut_demo_int" class="required rut"/>
+
                     <br>_______Datos de Inicio____________________________________________________________________________________
                     <br><br>
                     <?= form_label('Usuario','usuario')?>
