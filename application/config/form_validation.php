@@ -390,5 +390,12 @@ $config = array (
             'label' => 'Usuario',
             'rules' => 'required|trim|max_length[20]|alpha_numeric|xss_clean'
         )
+    ),
+    'foro' => array(
+        array(
+            'field' => 'comentario',
+            'label' => 'comentario',
+            'rules' => 'required|xss_clean'
+        )
     )
 );

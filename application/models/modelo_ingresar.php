@@ -94,7 +94,7 @@ class Modelo_ingresar extends CI_Model {
         return $query->result();
     }
     function ver_foro(){
-        $query = $this->db->select("*")->from("Foro")->get();
+        $query = $this->db->select("*")->from("Foro")->order_by("Id_Foro",'desc')->get();
         return $query->result();
     }
     function ver_administrador(){

@@ -39,18 +39,24 @@ class Proyecto_isw extends CI_Controller {
     function administrador_resultado_foro(){
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
-                $datestring = "%Y-%m-%d - %h:%i %a";
-                $fecha = mdate($datestring);
-                $formulario = array(
-                    'Usuario' => $this->session->userdata('usuario'),
-                    'Titulo' => $this->input->post('titulo'),
-                    'Mensaje' => $this->input->post('comentario'),
-                    'Permiso_Usuario' => $this->session->userdata('permiso'),
-                    'Fecha_Posteo' => $fecha
-                );
-                $this->modelo_ingresar->agregar_foro($formulario);
-                $query = $this->modelo_ingresar->ver_foro();
-                $this->load->view('administrador/administrador_foro',  compact("query"));
+                if ($this->form_validation->run('foro') == TRUE) {
+                    $datestring = "%Y-%m-%d - %h:%i %a";
+                    $fecha = mdate($datestring);
+                    $formulario = array(
+                        'Usuario' => $this->session->userdata('usuario'),
+                        'Titulo' => $this->input->post('titulo'),
+                        'Mensaje' => $this->input->post('comentario'),
+                        'Permiso_Usuario' => $this->session->userdata('permiso'),
+                        'Fecha_Posteo' => $fecha
+                    );
+                    $this->modelo_ingresar->agregar_foro($formulario);
+                    $query = $this->modelo_ingresar->ver_foro();
+                    $this->load->view('administrador/administrador_foro',  compact("query"));
+                }
+                else{
+                    $query = $this->modelo_ingresar->ver_foro();
+                    $this->load->view('administrador/administrador_foro',  compact("query"));
+                }
             } 
             else {
                 $this->load->view('administrador/administrador_foro');
@@ -78,7 +84,37 @@ class Proyecto_isw extends CI_Controller {
     }
     function alumno_foro(){
         if (!empty($this->session_id)) {
-            $this->load->view('alumno/alumno_foro');
+            $query = $this->modelo_ingresar->ver_foro();
+            $this->load->view('alumno/alumno_foro',  compact("query"));
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
+    function alumno_resultado_foro(){
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+                if ($this->form_validation->run('foro') == TRUE) {
+                    $datestring = "%Y-%m-%d - %h:%i %a";
+                    $fecha = mdate($datestring);
+                    $formulario = array(
+                        'Usuario' => $this->session->userdata('usuario'),
+                        'Titulo' => $this->input->post('titulo'),
+                        'Mensaje' => $this->input->post('comentario'),
+                        'Permiso_Usuario' => $this->session->userdata('permiso'),
+                        'Fecha_Posteo' => $fecha
+                    );
+                    $this->modelo_ingresar->agregar_foro($formulario);
+                    $query = $this->modelo_ingresar->ver_foro();
+                    $this->load->view('alumno/alumno_foro',  compact("query"));
+                }
+                else{
+                    $query = $this->modelo_ingresar->ver_foro();
+                    $this->load->view('alumno/alumno_foro',  compact("query"));
+                }
+            } 
+            else {
+                $this->load->view('alumno/alumno_foro');
+            }
         } else {
             $this->load->view('welcome_message');
         }
@@ -100,7 +136,37 @@ class Proyecto_isw extends CI_Controller {
     }
     function empleador_foro(){
         if (!empty($this->session_id)) {
-            $this->load->view('empleador/empleador_foro');
+            $query = $this->modelo_ingresar->ver_foro();
+            $this->load->view('empleador/empleador_foro',  compact("query"));
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
+    function empleador_resultado_foro(){
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+                if ($this->form_validation->run('foro') == TRUE) {
+                    $datestring = "%Y-%m-%d - %h:%i %a";
+                    $fecha = mdate($datestring);
+                    $formulario = array(
+                        'Usuario' => $this->session->userdata('usuario'),
+                        'Titulo' => $this->input->post('titulo'),
+                        'Mensaje' => $this->input->post('comentario'),
+                        'Permiso_Usuario' => $this->session->userdata('permiso'),
+                        'Fecha_Posteo' => $fecha
+                    );
+                    $this->modelo_ingresar->agregar_foro($formulario);
+                    $query = $this->modelo_ingresar->ver_foro();
+                    $this->load->view('empleador/empleador_foro',  compact("query"));
+                }
+                else{
+                    $query = $this->modelo_ingresar->ver_foro();
+                    $this->load->view('empleador/empleador_foro',  compact("query"));
+                }
+            } 
+            else {
+                $this->load->view('empleador/empleador_foro');
+            }
         } else {
             $this->load->view('welcome_message');
         }

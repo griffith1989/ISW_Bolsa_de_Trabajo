@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/foro.css">
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
 </head>
 <body>
     <div>
@@ -80,9 +78,9 @@
                         )
                     ?>
                     <?= form_label('Titulo','titulo')?>
-                    <?= form_input($titulo)?>
-                    <?= form_label('Comentario','comentario')?>
-                    <?= form_textarea($comentario)?>
+                    <?= form_input($titulo)?><br><br>
+                    <?= form_label('Comentario','comentario')?><br>
+                    <?= form_textarea($comentario)?><br><br>
                     <?= form_submit('Aceptar','Aceptar')?>
                     <?= form_close()?>
                     
@@ -90,7 +88,7 @@
                     <?php foreach ($query as $query){?>
                     <div id="foro">
                         <div id="datos">
-                            <h4>Usuario:<?php echo $query->Usuario ?></h4>
+                            <h4>Usuario : <?php echo $query->Usuario ?></h4>
                             <h5><?php echo $query->Permiso_Usuario ?></h5>
                             <h6><?php echo $query->Fecha_Posteo ?></h6>
                         </div>

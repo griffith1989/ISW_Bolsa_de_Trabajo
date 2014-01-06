@@ -19,7 +19,7 @@
                             
                             <li><a href = "<?php echo base_url()?>proyecto_isw/empleador_trabajos">Trabajo</a></li>
                             
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/alumno_foro">Foro</a></li>
+                            <li><a href = "<?php echo base_url()?>proyecto_isw/empleador_foro">Foro</a></li>
                         </ul>
                     </div>
             
