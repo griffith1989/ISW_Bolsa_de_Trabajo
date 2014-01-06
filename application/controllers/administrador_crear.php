@@ -1,24 +1,25 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Administrador_crear extends CI_Controller {
-    
+
     private $session_id;
+
     function __construct() {
         parent::__construct();
         $this->load->model('modelo_ingresar');
-        $this->session_id = $this->session->userdata('usuario', 'id','permiso');
+        $this->session_id = $this->session->userdata('usuario', 'id', 'permiso');
     }
-    function crear_alumno(){
-        if(!empty($this->session_id)){
-            if($this->input->post()){
-            
-                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_alumno') == FALSE)
-                {
-                        $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
 
-                }
-                else
-                {
+    function crear_alumno() {
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+
+                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_alumno') === FALSE) {
+                    $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
+                } else {
                     $formulario = array(
                         'Usuario' => $this->input->post('usuario', true),
                         'Contrasenia' => sha1($this->input->post('pass', true)),
@@ -39,38 +40,30 @@ class Administrador_crear extends CI_Controller {
                         'Id_Administrador' => $this->session->userdata('id'),
                         'Verificar' => 'TRUE'
                     );
-                    $usuarios = array ('Usuario' => $this->input->post('usuario', true));
-                    if($this->modelo_ingresar->usuario_unico($usuarios) == TRUE){
-                        $this->modelo_ingresar->agregar_alumno($formulario,$usuarios);
+                    $usuarios = array('Usuario' => $this->input->post('usuario', true));
+                    if ($this->modelo_ingresar->usuario_unico($usuarios) == TRUE) {
+                        $this->modelo_ingresar->agregar_alumno($formulario, $usuarios);
                         $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
-                    }
-                    else{
-                        $this->session->set_flashdata('item', 'El usuario ya existe');
-                        $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
+                    } else {
+                        $this->session->set_flashdata('errorMsg', 'El usuario ya existe');
+                        redirect('administrador/consultas/seleccion_crear/crear_alumno');
                     }
                 }
-            }
-            else {
+            } else {
                 $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
             }
-        }
-        else {
+        } else {
             $this->load->view('welcome_message');
         }
-        
-    
     }
-    function crear_administrador(){
-        if(!empty($this->session_id)){
-            if($this->input->post()){
-            
-                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_administrador') == FALSE)
-                {
-                        $this->load->view('administrador/consultas/seleccion_crear/crear_administrador');
 
-                }
-                else
-                {
+    function crear_administrador() {
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+
+                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_administrador') == FALSE) {
+                    $this->load->view('administrador/consultas/seleccion_crear/crear_administrador');
+                } else {
                     $formulario = array(
                         'Usuario' => $this->input->post('usuario', true),
                         'Contrasenia' => sha1($this->input->post('pass', true)),
@@ -88,38 +81,30 @@ class Administrador_crear extends CI_Controller {
                         'Fecha_Nacimiento' => $this->input->post('fecha', true),
                         'Cargo' => $this->input->post('cargo', true)
                     );
-                    $usuarios = array ('Usuario' => $this->input->post('usuario', true));
-                    if($this->modelo_ingresar->usuario_unico($usuarios) == TRUE){
-                        $this->modelo_ingresar->agregar_administrador($formulario,$usuarios);
+                    $usuarios = array('Usuario' => $this->input->post('usuario', true));
+                    if ($this->modelo_ingresar->usuario_unico($usuarios) == TRUE) {
+                        $this->modelo_ingresar->agregar_administrador($formulario, $usuarios);
                         $this->load->view('administrador/consultas/seleccion_crear/crear_administrador');
-                    }
-                    else{
+                    } else {
                         $this->session->set_flashdata('item', 'El usuario ya existe');
                         $this->load->view('administrador/consultas/seleccion_crear/crear_administrador');
                     }
                 }
-            }
-            else {
+            } else {
                 $this->load->view('administrador/consultas/seleccion_crear/crear_administrador');
             }
-        }
-        else {
+        } else {
             $this->load->view('welcome_message');
         }
-        
-    
     }
-    function crear_empleador(){
-        if(!empty($this->session_id)){
-            if($this->input->post()){
-            
-                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_empleador') == FALSE)
-                {
-                        $this->load->view('administrador/consultas/seleccion_crear/crear_empleador');
 
-                }
-                else
-                {
+    function crear_empleador() {
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+
+                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_empleador') == FALSE) {
+                    $this->load->view('administrador/consultas/seleccion_crear/crear_empleador');
+                } else {
                     $formulario = array(
                         'Usuario' => $this->input->post('usuario', true),
                         'Contrasenia' => sha1($this->input->post('pass', true)),
@@ -134,26 +119,21 @@ class Administrador_crear extends CI_Controller {
                         'Id_Administrador' => $this->session->userdata('id'),
                         'Verificar' => 'TRUE'
                     );
-                    $usuarios = array ('Usuario' => $this->input->post('usuario', true));
-                    if($this->modelo_ingresar->usuario_unico($usuarios) == TRUE){
-                        $this->modelo_ingresar->agregar_empleador($formulario,$usuarios);
+                    $usuarios = array('Usuario' => $this->input->post('usuario', true));
+                    if ($this->modelo_ingresar->usuario_unico($usuarios) == TRUE) {
+                        $this->modelo_ingresar->agregar_empleador($formulario, $usuarios);
                         $this->load->view('administrador/consultas/seleccion_crear/crear_empleador');
-                    }
-                    else{
+                    } else {
                         $this->session->set_flashdata('item', 'El usuario ya existe');
                         $this->load->view('administrador/consultas/seleccion_crear/crear_empleador');
                     }
                 }
-            }
-            else {
+            } else {
                 $this->load->view('administrador/consultas/seleccion_crear/crear_empleador');
             }
-        }
-        else {
+        } else {
             $this->load->view('welcome_message');
         }
-        
-    
     }
-}
 
+}

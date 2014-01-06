@@ -10,17 +10,21 @@ class Proyecto_isw extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('modelo_ingresar');
-        $this->session_id = $this->session->userdata('usuario', 'id','permiso');
+        $this->session_id = $this->session->userdata('usuario', 'id', 'permiso');
     }
+
     function ver_ingresar() {
         $this->load->view('ingresar');
     }
-    function ver_inicio(){
+
+    function ver_inicio() {
         $this->load->view('welcome_message');
     }
+
     function ver_foro() {
         $this->load->view('foro');
     }
+
     function administrador_inicio() {
         if (!empty($this->session_id)) {
             $this->load->view('administrador/administrador_inicio');
@@ -28,60 +32,68 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+
     function administrador_foro() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_foro();
-            $this->load->view('administrador/administrador_foro',  compact("query"));
+            $this->load->view('administrador/administrador_foro', compact("query"));
         } else {
             $this->load->view('welcome_message');
         }
     }
+
     function administrador_trabajos() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_trabajo();
-            $this->load->view('administrador/administrador_trabajo',  compact("query"));
+            $this->load->view('administrador/administrador_trabajo', compact("query"));
         } else {
             $this->load->view('welcome_message');
         }
     }
-    function alumno_inicio(){
+
+    function alumno_inicio() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));
             $vacantes = $this->modelo_ingresar->ver_vacantes($this->session->userdata('id'));
-            $this->load->view('alumno/alumno_inicio',  compact("query","vacantes"));
+            $this->load->view('alumno/alumno_inicio', compact("query", "vacantes"));
         } else {
             $this->load->view('welcome_message');
         }
     }
-    function alumno_foro(){
+
+    function alumno_foro() {
         if (!empty($this->session_id)) {
             $this->load->view('alumno/alumno_foro');
         } else {
             $this->load->view('welcome_message');
         }
     }
-    function empleador_inicio(){
+
+    function empleador_inicio() {
         if (!empty($this->session_id)) {
             $this->load->view('empleador/empleador_inicio');
         } else {
             $this->load->view('welcome_message');
         }
     }
+
     function empleador_trabajos() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_trabajo();
-            $this->load->view('empleador/empleador_trabajo',  compact("query"));
+            $this->load->view('empleador/empleador_trabajo', compact("query"));
         } else {
             $this->load->view('welcome_message');
         }
     }
-    function empleador_foro(){
+
+    function empleador_foro() {
         if (!empty($this->session_id)) {
             $this->load->view('empleador/empleador_foro');
         } else {
             $this->load->view('welcome_message');
         }
     }
+
     function ver_perfil_administrador() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->mostrar_administrador($this->session->userdata('usuario'));
@@ -90,7 +102,8 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
-    function ver_perfil_alumno(){
+
+    function ver_perfil_alumno() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->mostrar_alumno($this->session->userdata('usuario'));
             $this->load->view('alumno/perfil_alumno', compact("query"));
@@ -98,22 +111,22 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+
     function ver_administrador() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_administrador();
-                    $this->load->view('administrador/consultas/seleccion_ver/ver_administrador',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_ver/ver_administrador', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
-                    if($this->modelo_ingresar->existe_usuario($usuario,'Administrador') == TRUE){
+                    if ($this->modelo_ingresar->existe_usuario($usuario, 'Administrador') == TRUE) {
                         $query = $this->modelo_ingresar->mostrar_administrador($usuario);
                         $this->load->view('administrador/consultas/seleccion_ver/resultado_ver_administrador', compact("query"));
-                    }
-                    else{
+                    } else {
                         $query = $this->modelo_ingresar->ver_administrador();
-                        $this->load->view('administrador/consultas/seleccion_ver/ver_administrador',  compact("query"));
+                        $this->load->view('administrador/consultas/seleccion_ver/ver_administrador', compact("query"));
                     }
                 }
             } else {
@@ -123,22 +136,22 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+
     function ver_alumno() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_alumno();
-                    $this->load->view('administrador/consultas/seleccion_ver/ver_alumno',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_ver/ver_alumno', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
-                    if($this->modelo_ingresar->existe_usuario($usuario,'Alumno') == TRUE){
+                    if ($this->modelo_ingresar->existe_usuario($usuario, 'Alumno') == TRUE) {
                         $query = $this->modelo_ingresar->mostrar_alumno($usuario);
                         $this->load->view('administrador/consultas/seleccion_ver/resultado_ver_alumno', compact("query"));
-                    }
-                    else{
+                    } else {
                         $query = $this->modelo_ingresar->ver_alumno();
-                        $this->load->view('administrador/consultas/seleccion_ver/ver_alumno',  compact("query"));
+                        $this->load->view('administrador/consultas/seleccion_ver/ver_alumno', compact("query"));
                     }
                 }
             } else {
@@ -155,16 +168,15 @@ class Proyecto_isw extends CI_Controller {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_empleador();
-                    $this->load->view('administrador/consultas/seleccion_ver/ver_empleador',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_ver/ver_empleador', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
-                    if($this->modelo_ingresar->existe_usuario($usuario,'Empleador') == TRUE){
+                    if ($this->modelo_ingresar->existe_usuario($usuario, 'Empleador') == TRUE) {
                         $query = $this->modelo_ingresar->mostrar_empleador($usuario);
                         $this->load->view('administrador/consultas/seleccion_ver/resultado_ver_empleador', compact("query"));
-                    }
-                    else{
+                    } else {
                         $query = $this->modelo_ingresar->ver_empleador();
-                        $this->load->view('administrador/consultas/seleccion_ver/ver_empleador',  compact("query"));
+                        $this->load->view('administrador/consultas/seleccion_ver/ver_empleador', compact("query"));
                     }
                 }
             } else {
@@ -181,12 +193,12 @@ class Proyecto_isw extends CI_Controller {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_alumno();
-                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_alumno',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_alumno', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
                     $this->modelo_ingresar->eliminar_alumno($usuario);
                     $query = $this->modelo_ingresar->ver_alumno();
-                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_alumno',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_alumno', compact("query"));
                 }
             } else {
                 $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_alumno');
@@ -202,12 +214,12 @@ class Proyecto_isw extends CI_Controller {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_empleador();
-                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_empleador',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_empleador', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
                     $this->modelo_ingresar->eliminar_empleador($usuario);
                     $query = $this->modelo_ingresar->ver_empleador();
-                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_empleador',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_empleador', compact("query"));
                 }
             } else {
                 $this->load->view('administrador/consultas/seleccion_eliminar/eliminar_empleador');
@@ -216,12 +228,13 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+
     function ver_modificar_administrador() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
-                    $usuario = $this->session->userdata('usuario');
-                    $query = $this->modelo_ingresar->mostrar_administrador($usuario);
-                    $this->load->view('administrador/consultas/seleccion_modificar/resultado_modificar_administrador',  compact("query"));
+                $usuario = $this->session->userdata('usuario');
+                $query = $this->modelo_ingresar->mostrar_administrador($usuario);
+                $this->load->view('administrador/consultas/seleccion_modificar/resultado_modificar_administrador', compact("query"));
             } else {
                 $this->load->view('administrador/consultas/seleccion_modificar/resultado_modificar_administrador');
             }
@@ -229,12 +242,13 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+
     function ver_modificar_perfil_alumno() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
-                    $usuario = $this->session->userdata('usuario');
-                    $query = $this->modelo_ingresar->mostrar_alumno($usuario);
-                    $this->load->view('alumno/alumno_modificar',  compact("query"));
+                $usuario = $this->session->userdata('usuario');
+                $query = $this->modelo_ingresar->mostrar_alumno($usuario);
+                $this->load->view('alumno/alumno_modificar', compact("query"));
             } else {
                 $this->load->view('alumno_inicio');
             }
@@ -242,22 +256,22 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+
     function ver_modificar_alumno() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_alumno();
-                    $this->load->view('administrador/consultas/seleccion_modificar/modificar_alumno',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_modificar/modificar_alumno', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
-                    if($this->modelo_ingresar->existe_usuario($usuario,'Alumno') == TRUE){
+                    if ($this->modelo_ingresar->existe_usuario($usuario, 'Alumno') == TRUE) {
                         $query = $this->modelo_ingresar->mostrar_alumno($usuario);
                         $this->load->view('administrador/consultas/seleccion_modificar/resultado_modificar_alumno', compact("query"));
-                    }
-                    else{
+                    } else {
                         $query = $this->modelo_ingresar->ver_alumno();
-                        $this->load->view('administrador/consultas/seleccion_modificar/modificar_alumno',  compact("query"));
+                        $this->load->view('administrador/consultas/seleccion_modificar/modificar_alumno', compact("query"));
                     }
                 }
             } else {
@@ -274,16 +288,15 @@ class Proyecto_isw extends CI_Controller {
 
                 if ($this->form_validation->run('usuario') == FALSE) {
                     $query = $this->modelo_ingresar->ver_empleador();
-                    $this->load->view('administrador/consultas/seleccion_modificar/modificar_empleador',  compact("query"));
+                    $this->load->view('administrador/consultas/seleccion_modificar/modificar_empleador', compact("query"));
                 } else {
                     $usuario = $this->input->post('usuario');
-                    if($this->modelo_ingresar->existe_usuario($usuario,'Empleador') == TRUE){
+                    if ($this->modelo_ingresar->existe_usuario($usuario, 'Empleador') == TRUE) {
                         $query = $this->modelo_ingresar->mostrar_empleador($usuario);
                         $this->load->view('administrador/consultas/seleccion_modificar/resultado_modificar_empleador', compact("query"));
-                    }
-                    else{
+                    } else {
                         $query = $this->modelo_ingresar->ver_empleador();
-                        $this->load->view('administrador/consultas/seleccion_modificar/modificar_empleador',  compact("query"));
+                        $this->load->view('administrador/consultas/seleccion_modificar/modificar_empleador', compact("query"));
                     }
                 }
             } else {
@@ -293,16 +306,16 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
-    function administrador_trabajo(){
+
+    function administrador_trabajo() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
                 $codigo_carrera = $this->input->post('codigo_carrera');
                 $descripcion = $this->input->post('descripcion');
-                if($this->session->userdata('permiso') == 'Administrador'){
+                if ($this->session->userdata('permiso') == 'Administrador') {
                     $id_administrador = $this->session->userdata('id');
                     $id_empleador = NULL;
-                }
-                else{
+                } else {
                     $id_administrador = NULL;
                     $id_empleador = $this->session->userdata('id');
                 }
@@ -319,25 +332,24 @@ class Proyecto_isw extends CI_Controller {
                 );
                 $this->modelo_ingresar->agregar_trabajo($formulario);
                 $query = $this->modelo_ingresar->ver_trabajo();
-                $this->load->view('administrador/administrador_trabajo',  compact("query"));
-            } 
-            else {
+                $this->load->view('administrador/administrador_trabajo', compact("query"));
+            } else {
                 $this->load->view('administrador/administrador_trabajo');
             }
         } else {
             $this->load->view('welcome_message');
         }
     }
-    function empleador_trabajo(){
+
+    function empleador_trabajo() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
                 $codigo_carrera = $this->input->post('codigo_carrera');
                 $descripcion = $this->input->post('descripcion');
-                if($this->session->userdata('permiso') == 'Administrador'){
+                if ($this->session->userdata('permiso') == 'Administrador') {
                     $id_administrador = $this->session->userdata('id');
                     $id_empleador = NULL;
-                }
-                else{
+                } else {
                     $id_administrador = NULL;
                     $id_empleador = $this->session->userdata('id');
                 }
@@ -354,15 +366,15 @@ class Proyecto_isw extends CI_Controller {
                 );
                 $this->modelo_ingresar->agregar_trabajo($formulario);
                 $query = $this->modelo_ingresar->ver_trabajo();
-                $this->load->view('empleador/empleador_trabajo',  compact("query"));
-            } 
-            else {
+                $this->load->view('empleador/empleador_trabajo', compact("query"));
+            } else {
                 $this->load->view('empleador/empleador_trabajo');
             }
         } else {
             $this->load->view('welcome_message');
         }
     }
+
     function validar_ingreso() {
 
         if ($this->input->post()) {
@@ -390,7 +402,7 @@ class Proyecto_isw extends CI_Controller {
                     if ($Permiso == 'Alumno') {
                         $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));
                         $vacantes = $this->modelo_ingresar->ver_vacantes($this->session->userdata('id'));
-                        $this->load->view('alumno/alumno_inicio',  compact("query","vacantes"));
+                        $this->load->view('alumno/alumno_inicio', compact("query", "vacantes"));
                     }
                     if ($Permiso == 'Empleador') {
                         $this->load->view('empleador/empleador_inicio');
