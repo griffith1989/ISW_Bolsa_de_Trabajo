@@ -16,61 +16,61 @@
                     <h1> UTEM Bolsa de Trabajo </h1>
                 </hgroup>
                 <div id="header">
-                    <ul class ="nav">
-                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_inicio">Inicio</a></li>
+                        <ul class ="nav">
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_inicio')?>">Inicio</a></li>
 
-                        <li><a>Consultas</a>
-                            <ul>
-                                <li> <a>Crear</a>
-                                    <ul>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_crear_administrador">Administrador</a></li>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_crear_alumno">Alumno</a></li>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_crear_empleador">Empleador</a></li>
-                                    </ul>
-                                </li>
-                                <li> <a>ver</a>
-                                    <ul>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_ver_administrador">Administrador</a></li>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_ver_alumno">Alumno</a></li>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_ver_empleador">Empleador</a></li>
-                                    </ul>
-                                </li>
-                                <li> <a>modificar</a>
-                                    <ul>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_modificar_alumno">Alumno</a></li>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_modificar_empleador">Empleador</a></li>
-                                    </ul>
-                                </li>
-                                <li> <a>eliminar</a>
-                                    <ul>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_eliminar_alumno">Alumno</a></li>
-                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_eliminar_empleador">Empleador</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                            <li><a>Consultas</a>
+                                <ul>
+                                    <li> <a>Crear</a>
+                                        <ul>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_crear_administrador')?>">Administrador</a></li>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_crear_alumno')?>">Alumno</a></li>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_crear_empleador')?>">Empleador</a></li>
+                                        </ul>
+                                    </li>
+                                    <li> <a>ver</a>
+                                        <ul>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_ver_administrador')?>">Administrador</a></li>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_ver_alumno')?>">Alumno</a></li>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_ver_empleador')?>">Empleador</a></li>
+                                        </ul>
+                                    </li>
+                                    <li> <a>modificar</a>
+                                        <ul>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_modificar_alumno')?>">Alumno</a></li>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_modificar_empleador')?>">Empleador</a></li>
+                                        </ul>
+                                    </li>
+                                    <li> <a>eliminar</a>
+                                        <ul>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_eliminar_alumno')?>">Alumno</a></li>
+                                            <li> <a href="<?php echo base_url('index.php/administrador_consulta/administrador_consultas_eliminar_empleador')?>">Empleador</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_trabajos">Trabajo</a></li>
-
-                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_foro">Foro</a></li>
-
-                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_solicitud">solicitudes</a></li>
-                    </ul>
-                </div>
-
-            </header>
-            <br><br><br><br>
-            <div id="usuario">
-                <a href="<?php echo base_url() ?>proyecto_isw/ver_perfil_administrador"> <?php echo $this->session->userdata('usuario') ?> </a>    
-                <a href="<?php echo base_url() ?>proyecto_isw/salir"> Salir </a>
-            </div>
-            <br>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_trabajos')?>">Trabajo</a></li>
+                            
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_foro')?>">Foro</a></li>
+                            
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_solicitud')?>">solicitudes</a></li>
+                        </ul>
+                    </div>
+            
+        </header>
+        <br><br><br><br>
+        <div id="usuario">
+            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_administrador')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
+            <a href="<?php echo base_url('index.php/proyecto_isw/salir')?>"> Salir </a>
+        </div>
+        <br>
             <section>
                 <div id="texto_adm">
                     <h1>Crear Alumno</h1>
 
                     <?php echo validation_errors(); ?>
-                    <?= form_open(base_url() . "administrador_crear/crear_alumno") ?>
+                    <?= form_open(base_url('index.php/administrador_crear/crear_alumno')) ?>
                     <?php
                     $usuario = array(
                         'name' => 'usuario',

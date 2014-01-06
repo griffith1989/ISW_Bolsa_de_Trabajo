@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
 </head>
 <body>
     <div>

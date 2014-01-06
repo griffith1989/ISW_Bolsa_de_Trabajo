@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/style.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar.css">
+    <link rel="stylesheet" href="<?php echo base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/desplegar.css') ?>">
 </head>
 <body>
     <div id="Encabezado">
@@ -13,11 +13,11 @@
             </hgroup>
             <div id="header">
                         <ul class ="nav">
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/ver_inicio">Inicio</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/ver_inicio')?>">Inicio</a></li>
 
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/ver_ingresar">Ingresar</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/ver_ingresar')?>">Ingresar</a></li>
 
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/ver_foro">Foro</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/ver_foro')?>">Foro</a></li>
                         </ul>
                     </div>
         </header>
@@ -28,7 +28,7 @@
                     <h1>Ingresar</h1>
                 </hgroup>
                 <?php echo validation_errors(); ?>
-                <?= form_open(base_url()."proyecto_isw/validar_ingreso")?>
+                <?= form_open(base_url('index.php/proyecto_isw/validar_ingreso'))?>
                 <?php
                     $usuario = array(
                         'name' => 'Usuario'

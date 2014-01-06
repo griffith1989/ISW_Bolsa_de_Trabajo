@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/foro.css">
+    <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/foro.css') ?>">
 </head>
 <body>
     <div>
@@ -15,17 +15,17 @@
             </hgroup>
             <div id="header">
                         <ul class ="nav">
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/alumno_inicio">Inicio</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/alumno_inicio')?>">Inicio</a></li>
 
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/alumno_foro">Foro</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/alumno_foro')?>">Foro</a></li>
                         </ul>
                     </div>
             
         </header>
         <br><br><br><br>
         <div id="usuario">
-            <a href="<?php echo base_url()?>proyecto_isw/ver_perfil_alumno"> <?php echo $this->session->userdata('usuario')?> </a>    
-            <a href="<?php echo base_url()?>proyecto_isw/salir"> Salir </a>
+            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_alumno')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
+            <a href="<?php echo base_url('index.php/proyecto_isw/salir')?>"> Salir </a>
         </div>
         <br>
         <section>

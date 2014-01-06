@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
+    <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+    <script src="<?php echo base_url('js/jquery.Rut.js'); ?>"></script>
 </head>
 <body>
     <div>
@@ -69,7 +69,7 @@
                     <h1>Crear Empleador</h1>
                     
                     <?php echo validation_errors();?>
-                    <?= form_open(base_url()."administrador_crear/crear_empleador") ?>
+                    <?= form_open(base_url('index.php/administrador_crear/crear_empleador')) ?>
                   <?php
                     $usuario = array(
                         'name' => 'usuario',
@@ -134,6 +134,17 @@
                     </p>
                     
                     <?php } ?>
+                    
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#rut').Rut({
+                                on_error: function() {
+                                    alert('El rut ingresado es incorrecto');
+                                }
+                            });
+                        });
+
+                    </script>
                     
                     <br>_______Datos de Inicio____________________________________________________________________________________
                     <br><br>
