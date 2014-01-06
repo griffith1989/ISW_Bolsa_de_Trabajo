@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/ISW_Bolsa_de_Trabajo/index.php';
+$config['base_url']	= 'http://localhost/ISW_Bolsa_de_Trabajo/';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= 'http://localhost/ISW_Bolsa_de_Trabajo/index.php';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

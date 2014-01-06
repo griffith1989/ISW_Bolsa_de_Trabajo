@@ -4,8 +4,6 @@
     <meta charset = "UTF-8" />
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/style.css">
     <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar.css">
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://localhost/ISW_Bolsa_de_Trabajo/js/script_inicio.js"></script>
 </head>
 <body>
     <div id="Encabezado">

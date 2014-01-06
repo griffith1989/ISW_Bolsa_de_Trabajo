@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset = "UTF-8" />
-        <link rel="stylesheet" href="<?php echo base_url('css/administrador.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/usuario.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
         <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
         <script src="<?php echo base_url('js/jquery.Rut.js'); ?>"></script>
         <title> UTEM Bolsa de Trabajo </title>

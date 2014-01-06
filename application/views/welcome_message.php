@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/style.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar.css">
+    <link rel="stylesheet" href="<?php echo base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/desplegar.css') ?>">
 </head>
 <body>
     <div id="encabezado">
