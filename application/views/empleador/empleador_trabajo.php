@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/green/style.css">
-    <script src="<?php echo base_url(js/jquery.tablesorter.js)?>"></script>
-    <script src="<?php echo base_url(js/jquery.js)?>"></script>
+    <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/green/style.css') ?>">
+    <script src="<?php echo base_url('js/jquery.tablesorter.js'); ?>"></script>
+    <script src="<?php echo base_url('js/jquery.js'); ?>"></script
     <script tsrc="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
@@ -18,19 +17,19 @@
             </hgroup>
                     <div id="header">
                         <ul class ="nav">
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/empleador_inicio">Inicio</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_inicio')?>">Inicio</a></li>
                             
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/empleador_trabajos">Trabajo</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_trabajos')?>">Trabajo</a></li>
                             
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/alumno_foro">Foro</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_foro')?>">Foro</a></li>
                         </ul>
                     </div>
             
         </header>
         <br><br><br><br>
         <div id="usuario">
-            <a href="<?php echo base_url()?>proyecto_isw/ver_perfil_alumno"> <?php echo $this->session->userdata('usuario')?> </a>    
-            <a href="<?php echo base_url()?>proyecto_isw/salir"> Salir </a>
+            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_alumno')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
+            <a href="<?php echo base_url('index.php/proyecto_isw/salir')?>"> Salir </a>
         </div>
         <br>
         <section>
@@ -38,7 +37,7 @@
                     <h1>Trabajos</h1>
                     
                     <?php echo validation_errors();?>
-                    <?= form_open(base_url()."proyecto_isw/empleador_trabajo") ?>
+                    <?= form_open(base_url('index.php/proyecto_isw/empleador_trabajo')) ?>
                     <?php
                         $codigo_carrera = 'codigo_carrera';
                         $opciones_carrera = array(
