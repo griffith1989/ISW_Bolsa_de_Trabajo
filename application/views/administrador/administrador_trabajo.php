@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset = "UTF-8" />
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/administrador.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/desplegar_adm.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/usuario.css">
-    <link rel="stylesheet" href="http://localhost/ISW_Bolsa_de_Trabajo/css/green/style.css">
-    <script src="<?php echo base_url(js/jquery.tablesorter.js)?>"></script>
-    <script src="<?php echo base_url(js/jquery.js)?>"></script>
-    <script tsrc="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-</head>
-<body>
-    <div>
-        <header>
-            <hgroup>
-                <h1> UTEM Bolsa de Trabajo </h1><br>
-            </hgroup>
-                    <div id="header">
-                        <ul class ="nav">
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/administrador_inicio">Inicio</a></li>
+    <head>
+        <meta charset = "UTF-8" />
+        <title> UTEM Bolsa de Trabajo </title>
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url('css/administrador.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/usuario.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/green/style.css'); ?>">
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.tablesorter.js') ?>"></script>
+    </head>
+    <body>
+        <div>
+            <header>
+                <hgroup>
+                    <h1> UTEM Bolsa de Trabajo </h1>
+                </hgroup>
+                <div id="header">
+                    <ul class ="nav">
+                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_inicio">Inicio</a></li>
 
-                            <li><a>Consultas</a>
-                                <ul>
-                                    <li> <a>Crear</a>
-                                        <ul>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_crear_administrador">Administrador</a></li>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_crear_alumno">Alumno</a></li>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_crear_empleador">Empleador</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a>ver</a>
-                                        <ul>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_ver_administrador">Administrador</a></li>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_ver_alumno">Alumno</a></li>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_ver_empleador">Empleador</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a>modificar</a>
-                                        <ul>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_modificar_alumno">Alumno</a></li>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_modificar_empleador">Empleador</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a>eliminar</a>
-                                        <ul>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_eliminar_alumno">Alumno</a></li>
-                                            <li> <a href="<?php echo base_url()?>administrador_consulta/administrador_consultas_eliminar_empleador">Empleador</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                        <li><a>Consultas</a>
+                            <ul>
+                                <li> <a>Crear</a>
+                                    <ul>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_crear_administrador">Administrador</a></li>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_crear_alumno">Alumno</a></li>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_crear_empleador">Empleador</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a>ver</a>
+                                    <ul>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_ver_administrador">Administrador</a></li>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_ver_alumno">Alumno</a></li>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_ver_empleador">Empleador</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a>modificar</a>
+                                    <ul>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_modificar_alumno">Alumno</a></li>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_modificar_empleador">Empleador</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a>eliminar</a>
+                                    <ul>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_eliminar_alumno">Alumno</a></li>
+                                        <li> <a href="<?php echo base_url() ?>administrador_consulta/administrador_consultas_eliminar_empleador">Empleador</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
 
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/administrador_trabajos">Trabajo</a></li>
-                            
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/administrador_foro">Foro</a></li>
-                            
-                            <li><a href = "<?php echo base_url()?>proyecto_isw/administrador_solicitud">solicitudes</a></li>
-                        </ul>
-                    </div>
-            
-        </header>
-        <br><br><br><br>
-        <div id="usuario">
-            <a href="<?php echo base_url()?>proyecto_isw/ver_perfil_administrador"> <?php echo $this->session->userdata('usuario')?> </a>    
-            <a href="<?php echo base_url()?>proyecto_isw/salir"> Salir </a>
-        </div>
-        <br>
-        <section>
-            <div id="texto_adm">
+                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_trabajos">Trabajo</a></li>
+
+                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_foro">Foro</a></li>
+
+                        <li><a href = "<?php echo base_url() ?>proyecto_isw/administrador_solicitud">solicitudes</a></li>
+                    </ul>
+                </div>
+
+            </header>
+            <br><br><br><br>
+            <div id="usuario">
+                <a href="<?php echo base_url() ?>proyecto_isw/ver_perfil_administrador"> <?php echo $this->session->userdata('usuario') ?> </a>    
+                <a href="<?php echo base_url() ?>proyecto_isw/salir"> Salir </a>
+            </div>
+            <br>
+            <section>
+                <div id="texto_adm">
                     <h1>Trabajos</h1>
-                    
-                    <?php echo validation_errors();?>
-                    <?= form_open(base_url()."proyecto_isw/administrador_trabajo") ?>
+
+                    <?php echo validation_errors(); ?>
+                    <?= form_open(base_url() . "proyecto_isw/administrador_trabajo") ?>
                     <?php
-                        $codigo_carrera = 'codigo_carrera';
-                        $opciones_carrera = array(
+                    $codigo_carrera = 'codigo_carrera';
+                    $opciones_carrera = array(
                         3021 => ' (3021)  Contador Público y Auditor',
                         3190 => ' (3190)  Técnico de Nivel Superior en Gestión Pública Mención en Gestión Municipal',
                         3210 => ' (3210)  Construcción Civil',
@@ -118,21 +118,19 @@
                         21083 => '(21083) Química Industrial',
                         21087 => '(21087) Ingeniería Civil en Prevención de Riesgos y Medioambiente',
                         21088 => '(21088) Cartografía y Geomática'
-                        );
-                        $especificacion = array (
-                            'name' => 'descripcion'
-                        );
+                    );
+                    $especificacion = array(
+                        'name' => 'descripcion'
+                    );
                     ?>
-                    <?= form_label('Carrera','codigo_carrera')?>
-                    <?= form_dropdown($codigo_carrera,$opciones_carrera)?><br>
-                    <?= form_label('Descripcion','descripcion')?><br>
-                    <?= form_textarea($especificacion)?><br>
-                    <?= form_submit('aceptar','aceptar')?>
-                <?= form_close()?>
+                    <?= form_label('Carrera', 'codigo_carrera') ?>
+                    <?= form_dropdown($codigo_carrera, $opciones_carrera) ?><br>
+                    <?= form_label('Descripcion', 'descripcion') ?><br>
+                    <?= form_textarea($especificacion) ?><br>
+                    <?= form_submit('aceptar', 'aceptar') ?>
+                    <?= form_close() ?>
                     <?php
-                    
-                    
-                        $encabezado = '
+                    $encabezado = '
                             <thead>
                                 <tr>
                                     <th>Usuario</th>
@@ -142,44 +140,45 @@
                                 </tr>
                             </thead>
                             ';
-                        $detalle = '<tbody>';
-                        foreach ($query as $query) {
-                            if($query->Id_Empleador == ''){
-                                $usuario = $query->Id_Administrador;
-                            }
-                            else{
-                                $usuario = $query->Id_Empleador;
-                            }
-                        $detalle .= '
-                            <tbody>
-                                <tr>
-                                    <td>'.$query->Usuario.'</td>
-                                    <td>'.$query->Codigo_Carrera.'</td>
-                                    <td>'.$query->Descripcion.'</td>
-                                    <td>'.$query->Fecha_Posteo.'</td>
-                                </tr>
-                            </tbody>
-                                ';
+                    $detalle = '<tbody>';
+                    foreach ($query as $query) {
+                        if ($query->Id_Empleador == '') {
+                            $usuario = $query->Id_Administrador;
+                        } else {
+                            $usuario = $query->Id_Empleador;
                         }
-                        $detalle .= '<tbody>';
+                        $detalle .= '
+                                <tr>
+                                    <td>' . $query->Usuario . '</td>
+                                    <td>' . $query->Codigo_Carrera . '</td>
+                                    <td>' . $query->Descripcion . '</td>
+                                    <td>' . $query->Fecha_Posteo . '</td>
+                                </tr>
+                                ';
+                    }
+                    $detalle .= '<tbody>';
                     ?>
-                    <table class="tablesorter">
-                        <?php echo $encabezado;?>
-                        <?php echo $detalle;?>
+                    <table id='tabla' class="tablesorter">
+                        <?php echo $encabezado; ?>
+                        <?php echo $detalle; ?>
                     </table>
                     <script>
-                        $(document).ready(function(){
-                            $("table").tablesorter( {sortList: [[0,0], [2,1]]} ); 
-                            $("tbody tr").mouseenter(function(){
-                                $(this).css("background-color","#CCC");
-                            })
-                            $("tbody tr").mouseleave(function(){
-                                $(this).css("background-color","#FFF");
-                            })
+                        $(document).ready(function() {
+                            $("#tabla").tablesorter({sortList: [[0, 0], [2, 1]], widgets: ['zebra']});
+
+//
+//                            $("tr").not(':first').hover(
+//                                    function() {
+//                                        $(this).css("background", "red");
+//                                    },
+//                                    function() {
+//                                        $(this).css("background", "");
+//                                    }
+//                            );
                         });
                     </script>
-            </div>
-        </section>
-    </div>
-</body>
+                </div>
+            </section>
+        </div>
+    </body>
 </html>
