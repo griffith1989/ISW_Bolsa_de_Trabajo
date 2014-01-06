@@ -34,12 +34,6 @@
             <div id="texto_adm">
                     <h1>Inicio</h1>
                     <?php
-                        $cont = 0;
-                        $trabajo_aceptado = [];
-                        foreach ($vacantes as $vacantes) {
-                            $trabajo_aceptado = $query->Id_Trabajo;
-                            $cont++;
-                        }
                         
                         $encabezado = '
                             <thead>
@@ -52,28 +46,24 @@
                             </thead>
                             ';
                         $detalle = '<tbody>';
-                        /*form_open(base_url()."proyecto_isw/hola");
-                        $Trabajo = 'No';
-                        $cont = 0;
+                        
                         foreach ($query as $query) {
-                            while (count($trabajo_aceptado != $cont))
-                            if($trabajo_aceptado[$cont] == $query->Id_Trabajo){
-                                $trabajo = 'Si';
-                                $cont++;
-                            }
+                            form_open(base_url('index.php/'));
+                            form_hidden('id_trabajo',$query->Id_Trabajo);
                         $detalle .= '
                             <tbody>
                                 <tr>
-                                    <td>'.$trabajo.'<td>
+                                    <td>'.form_submit('Aceptar','Aceptar').'<td>
                                     <td>'.$query->Usuario.'</td>
                                     <td>'.$query->Descripcion.'</td>
                                     <td>'.$query->Fecha_Posteo.'</td>
                                 </tr>
                             </tbody>
                                 ';
+                        form_close();
                         }
                         $detalle .= '<tbody>';
-                        form_close();*/
+                        
                     ?>
                     <table class="tablesorter">
                         <?php echo $encabezado;?>

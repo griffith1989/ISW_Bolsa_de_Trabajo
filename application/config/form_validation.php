@@ -113,7 +113,7 @@ $config = array (
         array (
             'field' => 'rut',
             'label' => 'Rut',
-            'rules' => 'required|trim|max_length[8]|numeric|xss_clean'
+            'rules' => 'required|trim|max_length[12]|xss_clean'
         ),
         array (
             'field' => 'fecha',

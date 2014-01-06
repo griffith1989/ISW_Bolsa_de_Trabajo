@@ -452,6 +452,17 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+    function agregar_trabajo(){
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+                    die($this->input->post('id_trabajo'));
+            } else {
+                $this->load->view('alumno_inicio');
+            }
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
     function validar_ingreso() {
 
         if ($this->input->post()) {

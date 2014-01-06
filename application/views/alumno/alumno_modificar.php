@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
+    <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+    <script src="<?php echo base_url('js/jquery.Rut.js'); ?>"></script>
 </head>
 <body>
     <div>
@@ -177,6 +179,17 @@
                     </p>
                     
                     <?php } ?>
+                    
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#rut').Rut({
+                                on_error: function() {
+                                    alert('El rut ingresado es incorrecto');
+                                }
+                            });
+                        });
+
+                    </script>
                     
                     <br>_______Datos de Inicio____________________________________________________________________________________
                     <br><br>
