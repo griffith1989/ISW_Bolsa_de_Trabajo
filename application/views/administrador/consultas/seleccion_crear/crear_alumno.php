@@ -216,14 +216,20 @@
 
                     
                         <script>
-           $.validator.addMethod("rut", function(value, element) {
-            return this.optional(element) || $.Rut.validar(value);
-          }, "Este campo debe ser un rut valido.");
+           $(document).ready(function(){
+                
+                  $.validator.addMethod("rut", function(value, element) {
+                    return this.optional(element) || $.Rut.validar(value);
+                  }, "Este campo debe ser un rut valido.");
 
-          $("#jq-validation").validate();
+                  $("#jq-validation").validate();
+                  
+                  $('#rut').Rut({
+		validation: false
+									});
+                });
 
             </script>
-            <input type="text" name="rut_demo_int" class="required rut"/>
 
                     <br>_______Datos de Inicio____________________________________________________________________________________
                     <br><br>
