@@ -34,7 +34,7 @@
             <div id="texto_adm">
                     <h1>Inicio</h1>
                     <?php echo validation_errors();?>
-                    <?= form_open(base_url('index.php/')) ?>
+                    <?= form_open(base_url('index.php/proyecto_isw/agregar_trabajo')) ?>
                     <?php
                         $trabajo = array(
                             'name' => 'id_trabajo'

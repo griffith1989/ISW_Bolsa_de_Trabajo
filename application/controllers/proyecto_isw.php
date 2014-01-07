@@ -457,7 +457,19 @@ class Proyecto_isw extends CI_Controller {
     }
     function agregar_trabajo(){
         if (!empty($this->session_id)) {
-                    die($this->session->userdata('id_trabajo'));
+                    if($this->modelo_ingresar->acepto_trabajo($this->input->post('id_trabajo')) == FALSE){
+                        if($this->modelo_ingresar->validado() == TRUE){
+                            
+                        }
+                        else{
+                            $this->session->set_flashdata('errorMsg', 'Ud. no ha sido validado');
+                            $this->load->view('alumno/alumno_inicio');
+                        }
+                    }
+                    else{
+                        $this->session->set_flashdata('errorMsg', 'Ya ha postulado a este trabajo');
+                        $this->load->view('alumno/alumno_inicio');
+                    }
         } 
         else {
             $this->load->view('welcome_message');

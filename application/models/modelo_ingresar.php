@@ -79,6 +79,33 @@ class Modelo_ingresar extends CI_Model {
             return FALSE;
         }
     }
+    function acepto_trabajo($id){
+        $query = $this->db->select("Id_Trabajo")->from("Vacantes")->where("Id_Alumno =".$this->session->userdata('id'))->get();
+        $result = $query->result();
+        if($result == NULL){
+            return FALSE;
+        }
+        else{
+            foreach ($result as $result){
+                if($result->Id_Trabajo == $id){
+                    return TRUE;
+                }
+            }
+            return FALSE;
+        }
+    }
+    function validado(){
+        $query = $this->db->select("Verificar")->from("alumno")->where("Id_Alumno =".$this->session->userdata('id'))->get();
+        $result = $query->row();
+        if($result == NULL){
+            return FALSE;
+        }
+        else{
+            if($result->Verificar == TRUE){
+                
+            }
+        }
+    }
     function ver_trabajo(){
         $query = $this->db->select("*")->from("Trabajo")->get();
         return $query->result();

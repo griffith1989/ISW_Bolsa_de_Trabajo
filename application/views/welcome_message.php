@@ -35,6 +35,7 @@
                 <aside>
                     <p>Para mayor informacion visitanos en <a href="http://www.utem.cl/" id="pag_utem">nuestra pagina inicial</a></p>
                     <br>
+                    <p>Consultas a ndpaez89@gmail.com</p>
                 </aside>
             </div>
         </section>

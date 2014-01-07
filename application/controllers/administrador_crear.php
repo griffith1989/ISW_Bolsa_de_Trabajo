@@ -131,8 +131,7 @@ class Administrador_crear extends CI_Controller {
                         'Telefono2' => $this->input->post('telefono2'),
                         'Correo' => $this->input->post('correo', true),
                         'Sexo' => $this->input->post('sexo', true),
-                        'Id_Administrador' => $this->session->userdata('id'),
-                        'Verificar' => 'TRUE'
+                        'Id_Administrador' => $this->session->userdata('id')
                     );
                     $usuarios = array ('Usuario' => $this->input->post('usuario', true));
                     if($this->modelo_ingresar->usuario_unico($usuarios) == TRUE){
