@@ -39,9 +39,8 @@
                 <?php 
                         echo '<br>_______Datos de Inicio____________________________________________________________________________________
                         <br><br>';
-                        echo 'Id: '.$query-> Id_Alumno.'<br/><br/>';
+                        echo 'Id: '.$query-> Id_Empleador.'<br/><br/>';
                         echo 'Usuario: '.$query-> Usuario.'<br/><br/>';
-                        echo 'Rut: '.$query-> Rut.'<br/><br/>';
                         echo '<br>_______Datos de Personales____________________________________________________________________________________
                         <br><br>';
                         echo 'Primer Nombre: '.$query->Nombre1.'<br/><br>';
@@ -55,26 +54,14 @@
                         else {
                             echo 'Femenino'.'<br/><br>';
                         }
-                        echo 'Fecha de Nacimiento: '.$query-> Fecha_Nacimiento.'<br/><br>';
-                        echo 'Año de Ingreso: '.$query-> Anio_Ingreso.'<br/><br/>';
-                        echo 'Codigo de la Carrera: '.$query-> Codigo_Carrera.'<br/><br/>';
                         echo '<br>_______Datos de Ubicación____________________________________________________________________________________
                         <br><br>';
                         echo 'Primer Telefono: '.$query-> Telefono1.'<br/><br/>';
                         echo 'Segundo Telefono: '.$query-> Telefono2.'<br/><br/>';
                         echo 'E-Mail: '.$query-> Correo.'<br/><br/>';
-                        echo 'Comuna: '.$query-> Comuna.'<br/><br/>';
-                        echo 'direccion: '.$query-> Direccion.'<br/><br/>';
                         echo '<br>_______Datos de la Cuenta____________________________________________________________________________________
                         <br><br>';
                         echo 'Fecha de Solicitud: '.$query-> Fecha_Solicitud.'<br/><br/>';
-                        echo 'Curriculum: ';
-                        if($query-> Curriculum == TRUE) {
-                            echo 'Curriculum: Si'.'<br/><br/>';
-                        }
-                        else {
-                            echo 'Curriculum: No'.'<br/><br/>';
-                        }
                         if($query-> Verificar == TRUE) {
                             echo 'Verificación: Si'.'<br/><br/>';
                             echo 'Id Administrador Verificador: '.$query-> Id_Administrador.'<br/><br/>';
