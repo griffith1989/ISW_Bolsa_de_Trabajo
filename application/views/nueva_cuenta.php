@@ -15,8 +15,6 @@
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/ver_inicio')?>">Inicio</a></li>
 
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/ver_ingresar')?>">Ingresar</a></li>
-
-                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/ver_foro')?>">Foro</a></li>
                         </ul>
                     </div>
         </header>

@@ -17,6 +17,8 @@
                         <ul class ="nav">
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_inicio')?>">Inicio</a></li>
                             
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_ver')?>">Ver</a></li>
+                            
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_trabajos')?>">Trabajo</a></li>
                             
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_foro')?>">Foro</a></li>
@@ -26,7 +28,7 @@
         </header>
         <br><br><br><br>
         <div id="usuario">
-            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_alumno')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
+            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_empleador')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
             <a href="<?php echo base_url('index.php/proyecto_isw/salir')?>"> Salir </a>
         </div>
         <br>

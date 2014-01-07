@@ -79,6 +79,10 @@ class Modelo_ingresar extends CI_Model {
             return FALSE;
         }
     }
+    function usuario_trabajo($id){
+        $query = $this->db->select("Usuario")->from("Vacantes")->where("Id_Trabajo ="."'".$id."'")->get();
+        return $query->result();
+    }
     function acepto_trabajo($id){
         $query = $this->db->select("Id_Trabajo")->from("Vacantes")->where("Id_Alumno =".$this->session->userdata('id'))->get();
         $result = $query->result();

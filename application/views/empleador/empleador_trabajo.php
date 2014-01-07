@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset = "UTF-8" />
     <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/green/style.css') ?>">
     <script src="<?php echo base_url('js/jquery.tablesorter.js'); ?>"></script>
-    <script src="<?php echo base_url('js/jquery.js'); ?>"></script
+    <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
     <script tsrc="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
@@ -19,6 +20,8 @@
                         <ul class ="nav">
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_inicio')?>">Inicio</a></li>
                             
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_ver')?>">Ver</a></li>
+                            
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_trabajos')?>">Trabajo</a></li>
                             
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/empleador_foro')?>">Foro</a></li>
@@ -28,7 +31,7 @@
         </header>
         <br><br><br><br>
         <div id="usuario">
-            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_alumno')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
+            <a href="<?php echo base_url('index.php/proyecto_isw/ver_perfil_empleador')?>"> <?php echo $this->session->userdata('usuario')?> </a>    
             <a href="<?php echo base_url('index.php/proyecto_isw/salir')?>"> Salir </a>
         </div>
         <br>
@@ -95,12 +98,26 @@
                     <?= form_textarea($especificacion)?><br>
                     <?= form_submit('aceptar','aceptar')?>
                 <?= form_close()?>
+                    <br>
+                    <?php echo validation_errors();?>
+                    <?= form_open(base_url('index.php/proyecto_isw/ver_vacantes')) ?>
+                    <?php
+                        $trabajo = array(
+                            'name' => 'id_trabajo'
+                        );
+                    ?>
+                    <?= form_label('Trabajo','id_trabajo')?><br>
+                    <?= form_input($trabajo)?><br><br>
+                    <?= form_submit('Aceptar','Aceptar')?>
+                    <?= form_close()?>
+                    
                     <?php
                     
                     
                         $encabezado = '
                             <thead>
                                 <tr>
+                                    <th>Trabajo</th>
                                     <th>Usuario</th>
                                     <th>Carrera</th>
                                     <th>Descripcion</th>
@@ -119,6 +136,7 @@
                         $detalle .= '
                             <tbody>
                                 <tr>
+                                    <td>'.$query->Id_Trabajo.'</td>
                                     <td>'.$query->Usuario.'</td>
                                     <td>'.$query->Codigo_Carrera.'</td>
                                     <td>'.$query->Descripcion.'</td>

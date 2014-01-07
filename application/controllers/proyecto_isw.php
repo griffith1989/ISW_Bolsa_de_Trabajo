@@ -18,9 +18,6 @@ class Proyecto_isw extends CI_Controller {
     function ver_inicio(){
         $this->load->view('welcome_message');
     }
-    function ver_foro() {
-        $this->load->view('foro');
-    }
     function crear_cuenta(){
         $this->load->view('nueva_cuenta');
     }
@@ -88,6 +85,15 @@ class Proyecto_isw extends CI_Controller {
     function alumno_foro(){
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_foro();
+            $this->load->view('alumno/alumno_foro',  compact("query"));
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
+    function alumno_Trabajos_Aceptados(){
+        if (!empty($this->session_id)) {
+            $query = $this->modelo_ingresar->ver_trabajo_aceptado();
+            
             $this->load->view('alumno/alumno_foro',  compact("query"));
         } else {
             $this->load->view('welcome_message');
@@ -174,6 +180,14 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+    function ver_vacantes(){
+        if (!empty($this->session_id)) {
+            $query = $this->modelo_ingresar->usuario_trabajo($this->input->post('id_trabajo'));
+            $this->load->view('empleador/resultado_trabajo', compact("query"));
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
     function ver_perfil_administrador() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->mostrar_administrador($this->session->userdata('usuario'));
@@ -236,7 +250,8 @@ class Proyecto_isw extends CI_Controller {
             } else {
                 $this->load->view('administrador/consultas/seleccion_ver/ver_alumno');
             }
-        } else {
+        } 
+        else {
             $this->load->view('welcome_message');
         }
     }
@@ -455,6 +470,41 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+    function empleador_ver(){
+        if(!empty($this->session_id)){
+            $query = $this->modelo_ingresar->ver_alumno();
+            $this->load->view('empleador/empleador_ver_alumno',  compact("query"));
+        }
+        else {
+            $this->load->view('welcome_message');
+        }
+    }
+    function empleador_resultado_ver(){
+        if (!empty($this->session_id)) {
+            if ($this->input->post()) {
+
+                if ($this->form_validation->run('usuario') == FALSE) {
+                    $query = $this->modelo_ingresar->ver_alumno();
+                    $this->load->view('empleador/empleador_ver_alumno',  compact("query"));
+                } else {
+                    $usuario = $this->input->post('usuario');
+                    if($this->modelo_ingresar->existe_usuario($usuario,'Alumno') == TRUE){
+                        $query = $this->modelo_ingresar->mostrar_alumno($usuario);
+                        $this->load->view('empleador/empleador_resultado_ver_alumno', compact("query"));
+                    }
+                    else{
+                        $query = $this->modelo_ingresar->ver_alumno();
+                        $this->load->view('empleador/empleador_ver_alumno',  compact("query"));
+                    }
+                }
+            } else {
+                $this->load->view('empleador/empleador_ver_alumno');
+            }
+        } 
+        else {
+            $this->load->view('welcome_message');
+        }
+    }
     function agregar_trabajo(){
         if (!empty($this->session_id)) {
             if ($this->form_validation->run('trabajo') == FALSE) {
@@ -462,7 +512,8 @@ class Proyecto_isw extends CI_Controller {
                         if($this->modelo_ingresar->validado() == TRUE){
                             $formulario = array(
                                 'Id_Alumno' => $this->session->userdata('id'),
-                                'Id_Trabajo' => $this->input->post('id_trabajo')
+                                'Id_Trabajo' => $this->input->post('id_trabajo'),
+                                'Usuario' => $this->session->userdata('usuario')
                             );
                             $this->modelo_ingresar->agregar_trabajo($formulario);
                             $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));

@@ -34,7 +34,6 @@
         <br>
         <section>
             <div id="texto_adm">
-                <h1>Perfil Alumno</h1>
                 <p>
                 <?php 
                         echo '<br>_______Datos de Inicio____________________________________________________________________________________
@@ -83,9 +82,6 @@
                             echo 'Verificación: No'.'<br/><br/>';
                         }
                     ?>
-                    <?= form_open(base_url('index.php/administrador_modificar/modificar_alumno'))?>
-                    <?= form_submit('Modificar','Modificar')?>
-                    <?= form_close()?>
                 </p>
                 
                 
@@ -94,4 +90,5 @@
     </div>
 </body>
 </html>
+
 
