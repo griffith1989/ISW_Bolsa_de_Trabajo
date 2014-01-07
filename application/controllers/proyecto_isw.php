@@ -210,6 +210,14 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+    function ver_vacantes_administrador(){
+        if (!empty($this->session_id)) {
+                $query = $this->modelo_ingresar->usuario_trabajo($this->input->post('id_trabajo'));
+                $this->load->view('administrador/resultado_trabajo', compact("query"));
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
     function ver_perfil_administrador() {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->mostrar_administrador($this->session->userdata('usuario'));

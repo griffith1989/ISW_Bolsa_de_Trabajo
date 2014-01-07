@@ -38,7 +38,7 @@
         <br>
         <section>
             <div id="texto_adm">
-                <h1>Inicio</h1>
+                <h1>Postulantes al Trabajo</h1>
             
             
             

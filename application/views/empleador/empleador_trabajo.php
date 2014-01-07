@@ -99,7 +99,6 @@
                     <?= form_submit('aceptar','aceptar')?>
                 <?= form_close()?>
                     <br>
-                    <?php echo validation_errors();?>
                     <?= form_open(base_url('index.php/proyecto_isw/ver_vacantes')) ?>
                     <?php
                         $trabajo = array(
