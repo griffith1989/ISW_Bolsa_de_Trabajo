@@ -4,6 +4,7 @@
     <meta charset = "UTF-8" />
     <link rel="stylesheet" href="<?php echo base_url('css/style.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/desplegar.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
 </head>
 <body>
     <div id="encabezado">
@@ -21,7 +22,7 @@
         </header>
         <br><br><br><br><br>
         <section>
-            <div id="texto">
+            <div id="texto_adm">
                 <hgroup>
                     <h1>Crear Cuenta</h1>
                 </hgroup>

@@ -402,5 +402,20 @@ $config = array (
         'field' => 'id_trabajo',
         'label' => 'id_trabajo',
         'rules' => 'required|xss_clean'
+    ),
+    'id_trabajo' => array(
+        'field' => 'id_trabajo',
+        'label' => 'id_trabajo',
+        'rules' => 'required|trim|max_length[9]||alpha_numeric|xss_clean'
+    ),
+    'descripcion' => array(
+        'field' => 'descripcion',
+        'label' => 'descripcion',
+        'rules' => 'required|xss_clean'
+    ),
+    'solicitud' => array(
+        'field' => 'aceptar',
+        'label' => 'aceptar',
+        'rules' => 'required|xss_clean'
     )
 );

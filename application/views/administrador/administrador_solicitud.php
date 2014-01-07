@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="<?php echo base_url('css/administrador.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/desplegar_adm.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('css/usuario.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/green/style.css') ?>">
+    <script src="<?php echo base_url(js/jquery.tablesorter.js)?>"></script>
+    <script src="<?php echo base_url(js/jquery.js)?>"></script>
+    <script tsrc="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
     <div>
@@ -51,7 +55,7 @@
                             
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_foro')?>">Foro</a></li>
                             
-                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_solicitud')?>">solicitudes</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_solicitud')?>">Solicitudes</a></li>
                         </ul>
                     </div>
             
@@ -64,7 +68,58 @@
         <br>
         <section>
             <div id="texto_adm">
-                    <h1>Inicio</h1>
+                    <h1>Solicitudes Pendientes</h1>
+                    <br>
+                    
+                    <?php echo validation_errors();?>
+                    <?= form_open(base_url('index.php/proyecto_isw/aceptar_solicitud')) ?>
+                    <?php
+                        $aceptar = array(
+                            'name' => 'aceptar'
+                        );
+                    ?>
+                    <?= form_label('Aceptar Solicitud','aceptar')?>
+                    <?= form_input($aceptar)?><br><br>
+                    <?= form_submit('Aceptar','Aceptar')?>
+                    <?= form_close()?>
+                    <br>
+                    <?php
+                        $encabezado = '
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Carrera</th>
+                                </tr>
+                            </thead>
+                            ';
+                        $detalle = '<tbody>';
+                        foreach ($query as $query) {
+                        $detalle .= '
+                            <tbody>
+                                <tr>
+                                    <td>'.$query->Usuario.'</td>
+                                    <td>'.$query->Codigo_Carrera.'</td>
+                                </tr>
+                            </tbody>
+                                ';
+                        }
+                        $detalle .= '<tbody>';
+                    ?>
+                    <table class="tablesorter">
+                        <?php echo $encabezado;?>
+                        <?php echo $detalle;?>
+                    </table>
+                    <script>
+                        $(document).ready(function(){
+                            $("table").tablesorter( {sortList: [[0,0], [2,1]]} ); 
+                            $("tbody tr").mouseenter(function(){
+                                $(this).css("background-color","#CCC");
+                            })
+                            $("tbody tr").mouseleave(function(){
+                                $(this).css("background-color","#FFF");
+                            })
+                        });
+                    </script>
             </div>
         </section>
     </div>

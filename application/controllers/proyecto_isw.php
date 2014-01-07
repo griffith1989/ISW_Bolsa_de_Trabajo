@@ -21,6 +21,20 @@ class Proyecto_isw extends CI_Controller {
     function crear_cuenta(){
         $this->load->view('nueva_cuenta');
     }
+    function aceptar_solicitud(){
+        if (!empty($this->session_id)) {
+                $formulario = array(
+                    'Usuario' => $this->input->post('aceptar',TRUE),
+                    'Verificar' => 'TRUE',
+                    'Id_Administrador' => $this->session->userdata('id')
+                );
+                $this->modelo_ingresar->aceptar_usuario($this->input->post('aceptar',TRUE),$formulario);
+                $this->load->view('administrador/administrador_inicio');
+            
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
     function administrador_inicio() {
         if (!empty($this->session_id)) {
             $this->load->view('administrador/administrador_inicio');
@@ -69,6 +83,14 @@ class Proyecto_isw extends CI_Controller {
         if (!empty($this->session_id)) {
             $query = $this->modelo_ingresar->ver_trabajo();
             $this->load->view('administrador/administrador_trabajo',  compact("query"));
+        } else {
+            $this->load->view('welcome_message');
+        }
+    }
+    function administrador_solicitud(){
+        if (!empty($this->session_id)) {
+            $query = $this->modelo_ingresar->ver_solicitud();
+            $this->load->view('administrador/administrador_solicitud',  compact("query"));
         } else {
             $this->load->view('welcome_message');
         }
@@ -182,8 +204,8 @@ class Proyecto_isw extends CI_Controller {
     }
     function ver_vacantes(){
         if (!empty($this->session_id)) {
-            $query = $this->modelo_ingresar->usuario_trabajo($this->input->post('id_trabajo'));
-            $this->load->view('empleador/resultado_trabajo', compact("query"));
+                $query = $this->modelo_ingresar->usuario_trabajo($this->input->post('id_trabajo'));
+                $this->load->view('empleador/resultado_trabajo', compact("query"));
         } else {
             $this->load->view('welcome_message');
         }
@@ -323,6 +345,51 @@ class Proyecto_isw extends CI_Controller {
             $this->load->view('welcome_message');
         }
     }
+    function crear_nuevo_alumno(){
+            if($this->input->post()){
+            
+                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_alumno') == FALSE)
+                {
+                        $this->load->view('crear_nueva_cuenta');
+
+                }
+                else
+                {
+                    $formulario = array(
+                        'Usuario' => $this->input->post('usuario', true),
+                        'Contrasenia' => sha1($this->input->post('pass', true)),
+                        'Rut' => $this->input->post('rut', true),
+                        'Nombre1' => $this->input->post('nombre1', true),
+                        'Nombre2' => $this->input->post('nombre2'),
+                        'Apellido1' => $this->input->post('apellido1', true),
+                        'Apellido2' => $this->input->post('apellido2', true),
+                        'Telefono1' => $this->input->post('telefono1', true),
+                        'Telefono2' => $this->input->post('telefono2'),
+                        'Correo' => $this->input->post('correo', true),
+                        'Sexo' => $this->input->post('sexo', true),
+                        'Comuna' => $this->input->post('comuna', true),
+                        'Direccion' => $this->input->post('direccion', true),
+                        'Fecha_Nacimiento' => $this->input->post('fecha', true),
+                        'Codigo_Carrera' => $this->input->post('codigo_carrera', true),
+                        'Anio_Ingreso' => $this->input->post('anio_ingreso', true),
+                        'Verificar' => FALSE
+                    );
+                    $usuarios = array ('Usuario' => $this->input->post('usuario', true));
+                    if($this->modelo_ingresar->usuario_unico($usuarios) == TRUE){
+                        $this->modelo_ingresar->agregar_alumno($formulario,$usuarios);
+                        $this->session->set_userdata('item');
+                        $this->load->view('ingresar');
+                    }
+                    else{
+                        $this->session->set_flashdata('errorMsg', 'El usuario ya existe');
+                        $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
+                    }
+                }
+            }
+            else {
+                $this->load->view('crear_nueva_cuenta');
+            }
+    }
     function ver_modificar_administrador() {
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
@@ -403,30 +470,36 @@ class Proyecto_isw extends CI_Controller {
     function administrador_trabajo(){
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
-                $codigo_carrera = $this->input->post('codigo_carrera');
-                $descripcion = $this->input->post('descripcion');
-                if($this->session->userdata('permiso') == 'Administrador'){
-                    $id_administrador = $this->session->userdata('id');
-                    $id_empleador = NULL;
+                if ($this->form_validation->run('trabajo') == FALSE) {
+                    $codigo_carrera = $this->input->post('codigo_carrera');
+                    $descripcion = $this->input->post('descripcion');
+                    if($this->session->userdata('permiso') == 'Administrador'){
+                        $id_administrador = $this->session->userdata('id');
+                        $id_empleador = NULL;
+                    }
+                    else{
+                        $id_administrador = NULL;
+                        $id_empleador = $this->session->userdata('id');
+                    }
+                    $datestring = "%Y-%m-%d - %h:%i %a";
+                    $fecha = mdate($datestring);
+                    $formulario = array(
+                        'Descripcion' => $descripcion,
+                        'Vigencia' => 'TRUE',
+                        'Fecha_Posteo' => $fecha,
+                        'Codigo_Carrera' => $codigo_carrera,
+                        'Id_Administrador' => $id_administrador,
+                        'Id_Empleador' => $id_empleador,
+                        'Usuario' => $this->session->userdata('usuario')
+                    );
+                    $this->modelo_ingresar->agregar_trabajo($formulario);
+                    $query = $this->modelo_ingresar->ver_trabajo();
+                    $this->load->view('administrador/administrador_trabajo',  compact("query"));
                 }
                 else{
-                    $id_administrador = NULL;
-                    $id_empleador = $this->session->userdata('id');
+                    $query = $this->modelo_ingresar->ver_trabajo();
+                    $this->load->view('administrador/administrador_trabajo',  compact("query"));
                 }
-                $datestring = "%Y-%m-%d - %h:%i %a";
-                $fecha = mdate($datestring);
-                $formulario = array(
-                    'Descripcion' => $descripcion,
-                    'Vigencia' => 'TRUE',
-                    'Fecha_Posteo' => $fecha,
-                    'Codigo_Carrera' => $codigo_carrera,
-                    'Id_Administrador' => $id_administrador,
-                    'Id_Empleador' => $id_empleador,
-                    'Usuario' => $this->session->userdata('usuario')
-                );
-                $this->modelo_ingresar->agregar_trabajo($formulario);
-                $query = $this->modelo_ingresar->ver_trabajo();
-                $this->load->view('administrador/administrador_trabajo',  compact("query"));
             } 
             else {
                 $this->load->view('administrador/administrador_trabajo');
@@ -438,30 +511,36 @@ class Proyecto_isw extends CI_Controller {
     function empleador_trabajo(){
         if (!empty($this->session_id)) {
             if ($this->input->post()) {
-                $codigo_carrera = $this->input->post('codigo_carrera');
-                $descripcion = $this->input->post('descripcion');
-                if($this->session->userdata('permiso') == 'Administrador'){
-                    $id_administrador = $this->session->userdata('id');
-                    $id_empleador = NULL;
+                if ($this->form_validation->run('descripcion') == TRUE) {
+                    $codigo_carrera = $this->input->post('codigo_carrera');
+                    $descripcion = $this->input->post('descripcion');
+                    if($this->session->userdata('permiso') == 'Administrador'){
+                        $id_administrador = $this->session->userdata('id');
+                        $id_empleador = NULL;
+                    }
+                    else{
+                        $id_administrador = NULL;
+                        $id_empleador = $this->session->userdata('id');
+                    }
+                    $datestring = "%Y-%m-%d - %h:%i %a";
+                    $fecha = mdate($datestring);
+                    $formulario = array(
+                        'Descripcion' => $descripcion,
+                        'Vigencia' => 'TRUE',
+                        'Fecha_Posteo' => $fecha,
+                        'Codigo_Carrera' => $codigo_carrera,
+                        'Id_Administrador' => $id_administrador,
+                        'Id_Empleador' => $id_empleador,
+                        'Usuario' => $this->session->userdata('usuario')
+                    );
+                    $this->modelo_ingresar->agregar_trabajo($formulario);
+                    $query = $this->modelo_ingresar->ver_trabajo();
+                    $this->load->view('empleador/empleador_trabajo',  compact("query"));
                 }
                 else{
-                    $id_administrador = NULL;
-                    $id_empleador = $this->session->userdata('id');
+                    $query = $this->modelo_ingresar->ver_trabajo();
+                    $this->load->view('empleador/empleador_trabajo',  compact("query"));
                 }
-                $datestring = "%Y-%m-%d - %h:%i %a";
-                $fecha = mdate($datestring);
-                $formulario = array(
-                    'Descripcion' => $descripcion,
-                    'Vigencia' => 'TRUE',
-                    'Fecha_Posteo' => $fecha,
-                    'Codigo_Carrera' => $codigo_carrera,
-                    'Id_Administrador' => $id_administrador,
-                    'Id_Empleador' => $id_empleador,
-                    'Usuario' => $this->session->userdata('usuario')
-                );
-                $this->modelo_ingresar->agregar_trabajo($formulario);
-                $query = $this->modelo_ingresar->ver_trabajo();
-                $this->load->view('empleador/empleador_trabajo',  compact("query"));
             } 
             else {
                 $this->load->view('empleador/empleador_trabajo');
@@ -515,7 +594,7 @@ class Proyecto_isw extends CI_Controller {
                                 'Id_Trabajo' => $this->input->post('id_trabajo'),
                                 'Usuario' => $this->session->userdata('usuario')
                             );
-                            $this->modelo_ingresar->agregar_trabajo($formulario);
+                            $this->modelo_ingresar->agregar_vacante($formulario);
                             $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));
                             $vacantes = $this->modelo_ingresar->ver_vacantes($this->session->userdata('id'));
                             $this->load->view('alumno/alumno_inicio',  compact("query","vacantes"));

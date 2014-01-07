@@ -54,6 +54,10 @@ class Modelo_ingresar extends CI_Model {
             return $row->Usuario;
         }
     }
+    function aceptar_usuario($usuario,$formulario = array()){
+        $this->db->where("Usuario ="."'".$usuario."'");
+        $this->db->update("Alumno",$formulario);
+    }
     function existe_usuario($usuario,$permiso){
         $query = $this->db->select("Usuario")->from($permiso)->where("Usuario ="."'".$usuario."'")->get();
         $result = $query->row();
@@ -143,6 +147,10 @@ class Modelo_ingresar extends CI_Model {
         $query = $this->db->select("*")->from("Empleador")->get();
         return $query->result();
     }
+    function ver_solicitud(){
+        $query = $this->db->select("*")->from("Alumno")->where("Verificar = FALSE")->get();
+        return $query->result();
+    }
     function agregar_alumno($datos = array(),$usuarios = array()) {
         $this->db->insert("Alumno", $datos);
         $this->db->insert("Usuarios",$usuarios);
@@ -157,6 +165,9 @@ class Modelo_ingresar extends CI_Model {
     }
     function agregar_trabajo($datos = array()){
         $this->db->insert("Trabajo", $datos);
+    }
+    function agregar_vacante($datos = array()){
+        $this->db->insert("Vacantes", $datos);
     }
     function agregar_foro($datos = array()){
         $this->db->insert("Foro",$datos);

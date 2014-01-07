@@ -105,7 +105,7 @@
                         else {
                             echo 'Curriculum: No'.'<br/><br/>';
                         }
-                        if($query-> Verificar == TRUE) {
+                        if($query-> Verificar == 't') {
                             echo 'Verificación: Si'.'<br/><br/>';
                             echo 'Id Administrador Verificador: '.$query-> Id_Administrador.'<br/><br/>';
                         }

@@ -55,7 +55,7 @@
                             
                             <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_foro')?>">Foro</a></li>
                             
-                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_solicitud')?>">solicitudes</a></li>
+                            <li><a href = "<?php echo base_url('index.php/proyecto_isw/administrador_solicitud')?>">Solicitudes</a></li>
                         </ul>
                     </div>
             
