@@ -457,19 +457,32 @@ class Proyecto_isw extends CI_Controller {
     }
     function agregar_trabajo(){
         if (!empty($this->session_id)) {
+            if ($this->form_validation->run('trabajo') == FALSE) {
                     if($this->modelo_ingresar->acepto_trabajo($this->input->post('id_trabajo')) == FALSE){
                         if($this->modelo_ingresar->validado() == TRUE){
-                            
+                            $formulario = array(
+                                'Id_Alumno' => $this->session->userdata('id'),
+                                'Id_Trabajo' => $this->input->post('id_trabajo')
+                            );
+                            $this->modelo_ingresar->agregar_trabajo($formulario);
+                            $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));
+                            $vacantes = $this->modelo_ingresar->ver_vacantes($this->session->userdata('id'));
+                            $this->load->view('alumno/alumno_inicio',  compact("query","vacantes"));
                         }
                         else{
                             $this->session->set_flashdata('errorMsg', 'Ud. no ha sido validado');
-                            $this->load->view('alumno/alumno_inicio');
+                            $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));
+                            $vacantes = $this->modelo_ingresar->ver_vacantes($this->session->userdata('id'));
+                            $this->load->view('alumno/alumno_inicio',  compact("query","vacantes"));
                         }
                     }
                     else{
                         $this->session->set_flashdata('errorMsg', 'Ya ha postulado a este trabajo');
-                        $this->load->view('alumno/alumno_inicio');
+                        $query = $this->modelo_ingresar->ver_trabajo_alumno($this->session->userdata('id'));
+                        $vacantes = $this->modelo_ingresar->ver_vacantes($this->session->userdata('id'));
+                        $this->load->view('alumno/alumno_inicio',  compact("query","vacantes"));
                     }
+            }
         } 
         else {
             $this->load->view('welcome_message');

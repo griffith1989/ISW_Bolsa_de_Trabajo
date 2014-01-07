@@ -95,14 +95,17 @@ class Modelo_ingresar extends CI_Model {
         }
     }
     function validado(){
-        $query = $this->db->select("Verificar")->from("alumno")->where("Id_Alumno =".$this->session->userdata('id'))->get();
+        $query = $this->db->select("Verificar")->from("Alumno")->where("Id_Alumno =".$this->session->userdata('id'))->get();
         $result = $query->row();
         if($result == NULL){
             return FALSE;
         }
         else{
             if($result->Verificar == TRUE){
-                
+                return TRUE;
+            }
+            else{
+                return FALSE;
             }
         }
     }
@@ -149,7 +152,7 @@ class Modelo_ingresar extends CI_Model {
         $this->db->insert("Usuarios",$usuarios);
     }
     function agregar_trabajo($datos = array()){
-        $this->db->insert("Trabajo", $datos);
+        $this->db->insert("Vacantes", $datos);
     }
     function agregar_foro($datos = array()){
         $this->db->insert("Foro",$datos);

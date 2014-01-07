@@ -46,7 +46,7 @@ $config = array (
         array (
             'field' => 'rut',
             'label' => 'Rut',
-            'rules' => 'required|trim|max_length[9]|alpha_numeric|xss_clean'
+            'rules' => 'required|trim|max_length[12]|xss_clean'
         ),
         array (
             'field' => 'fecha',
@@ -66,7 +66,7 @@ $config = array (
         array (
             'field' => 'correo',
             'label' => 'E-Mail',
-            'rules' => 'required|trim|max_length[30]|valid_email|xss_clean'
+            'rules' => 'required|trim|max_length[60]|valid_email|xss_clean'
         ),
         array (
             'field' => 'comuna',
@@ -138,7 +138,7 @@ $config = array (
         array (
             'field' => 'correo',
             'label' => 'E-Mail',
-            'rules' => 'required|trim|max_length[30]|valid_email|xss_clean'
+            'rules' => 'required|trim|max_length[60]|valid_email|xss_clean'
         ),
         array (
             'field' => 'comuna',
@@ -195,7 +195,7 @@ $config = array (
         array (
             'field' => 'correo',
             'label' => 'E-Mail',
-            'rules' => 'required|trim|max_length[30]|valid_email|xss_clean'
+            'rules' => 'required|trim|max_length[60]|valid_email|xss_clean'
         )
     ),
     'administrador/consultas/seleccion_crear/modificar_alumno' => array (
@@ -232,7 +232,7 @@ $config = array (
         array (
             'field' => 'rut',
             'label' => 'Rut',
-            'rules' => 'required|trim|max_length[9]|alpha_numeric|xss_clean'
+            'rules' => 'required|trim|max_length[12]|xss_clean'
         ),
         array (
             'field' => 'fecha',
@@ -257,7 +257,7 @@ $config = array (
         array (
             'field' => 'correo',
             'label' => 'E-Mail',
-            'rules' => 'required|trim|max_length[30]|valid_email|xss_clean'
+            'rules' => 'required|trim|max_length[60]|valid_email|xss_clean'
         ),
         array (
             'field' => 'comuna',
@@ -314,7 +314,7 @@ $config = array (
         array (
             'field' => 'correo',
             'label' => 'E-Mail',
-            'rules' => 'required|trim|max_length[30]|valid_email|xss_clean'
+            'rules' => 'required|trim|max_length[60]|valid_email|xss_clean'
         )
     ),
     'administrador/consultas/seleccion_crear/modificar_administrador' => array (
@@ -351,7 +351,7 @@ $config = array (
         array (
             'field' => 'rut',
             'label' => 'Rut',
-            'rules' => 'required|trim|max_length[9]|alpha_numeric|xss_clean'
+            'rules' => 'required|trim|max_length[12]|xss_clean'
         ),
         array (
             'field' => 'fecha',
@@ -371,7 +371,7 @@ $config = array (
         array (
             'field' => 'correo',
             'label' => 'E-Mail',
-            'rules' => 'required|trim|max_length[30]|valid_email|xss_clean'
+            'rules' => 'required|trim|max_length[60]|valid_email|xss_clean'
         ),
         array (
             'field' => 'comuna',
@@ -397,5 +397,10 @@ $config = array (
             'label' => 'comentario',
             'rules' => 'required|xss_clean'
         )
+    ),
+    'trabajo' => array(
+        'field' => 'id_trabajo',
+        'label' => 'id_trabajo',
+        'rules' => 'required|xss_clean'
     )
 );

@@ -33,6 +33,15 @@
         <section>
             <div id="texto_adm">
                     <h1>Inicio</h1>
+                    <?php
+                    if ( $this->session->flashdata('errorMsg') != '' )
+                    {
+                            ?>
+                    <p style="color: red;">
+                            <?php echo $this->session->flashdata('errorMsg'); ?>
+                    </p>
+                    
+                    <?php } ?>
                     <?php echo validation_errors();?>
                     <?= form_open(base_url('index.php/proyecto_isw/agregar_trabajo')) ?>
                     <?php
