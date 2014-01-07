@@ -457,14 +457,56 @@ class Proyecto_isw extends CI_Controller {
     }
     function agregar_trabajo(){
         if (!empty($this->session_id)) {
-            if ($this->input->post()) {
-                    die($this->input->post('id_trabajo'));
-            } else {
-                $this->load->view('alumno_inicio');
-            }
-        } else {
+                    die($this->session->userdata('id_trabajo'));
+        } 
+        else {
             $this->load->view('welcome_message');
         }
+    }
+    function agregar_nuevo_alumno(){
+        if($this->input->post()){
+            
+                if ($this->form_validation->run('administrador/consultas/seleccion_crear/crear_alumno') == FALSE)
+                {
+                        $this->load->view('crear_nueva_cuenta');
+
+                }
+                else
+                {
+                    $formulario = array(
+                        'Usuario' => $this->input->post('usuario', true),
+                        'Contrasenia' => sha1($this->input->post('pass', true)),
+                        'Rut' => $this->input->post('rut', true),
+                        'Nombre1' => $this->input->post('nombre1', true),
+                        'Nombre2' => $this->input->post('nombre2'),
+                        'Apellido1' => $this->input->post('apellido1', true),
+                        'Apellido2' => $this->input->post('apellido2', true),
+                        'Telefono1' => $this->input->post('telefono1', true),
+                        'Telefono2' => $this->input->post('telefono2'),
+                        'Correo' => $this->input->post('correo', true),
+                        'Sexo' => $this->input->post('sexo', true),
+                        'Comuna' => $this->input->post('comuna', true),
+                        'Direccion' => $this->input->post('direccion', true),
+                        'Fecha_Nacimiento' => $this->input->post('fecha', true),
+                        'Codigo_Carrera' => $this->input->post('codigo_carrera', true),
+                        'Anio_Ingreso' => $this->input->post('anio_ingreso', true),
+                        'Id_Administrador' => $this->session->userdata('id'),
+                        'Verificar' => 'False'
+                    );
+                    $usuarios = array ('Usuario' => $this->input->post('usuario', true));
+                    if($this->modelo_ingresar->usuario_unico($usuarios) == TRUE){
+                        $this->modelo_ingresar->agregar_alumno($formulario,$usuarios);
+                        $this->load->view('alumno/alumno_inicio');
+                    }
+                    else{
+                        $this->session->set_flashdata('errorMsg', 'El usuario ya existe');
+                        $this->load->view('crear_nueva_cuenta');
+                    }
+                }
+            }
+            else {
+                $this->load->view('administrador/consultas/seleccion_crear/crear_alumno');
+            }
     }
     function validar_dirdoc(){
         if ($this->input->post()) {

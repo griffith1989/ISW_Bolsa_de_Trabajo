@@ -26,13 +26,15 @@
             <div id="texto">
                 <article>
                     <h1>Inicio</h1>
+                    <br>
                     <p>
                         Esta es una pagina con el fin de facilitar la busqueda de
                         un trabajo para los alumnos de la Universidad Tecnologica Metropolitana.
-                    </p>
+                    </p><br>
                 </article>
                 <aside>
                     <p>Para mayor informacion visitanos en <a href="http://www.utem.cl/" id="pag_utem">nuestra pagina inicial</a></p>
+                    <br>
                 </aside>
             </div>
         </section>

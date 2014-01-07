@@ -33,12 +33,25 @@
         <section>
             <div id="texto_adm">
                     <h1>Inicio</h1>
+                    <?php echo validation_errors();?>
+                    <?= form_open(base_url('index.php/')) ?>
+                    <?php
+                        $trabajo = array(
+                            'name' => 'id_trabajo'
+                        );
+                    ?>
+                    <?= form_label('Trabajo','id_trabajo')?><br>
+                    <?= form_input($trabajo)?><br><br>
+                    <?= form_submit('Aceptar','Aceptar')?>
+                    <?= form_close()?>
+                    
+                    <br>
                     <?php
                         
                         $encabezado = '
                             <thead>
                                 <tr>
-                                    <th>   </th>
+                                    <th>Trabajo</th>
                                     <th>Usuario</th>
                                     <th>Descripcion</th>
                                     <th>Fecha Solicitud</th>
@@ -48,20 +61,16 @@
                         $detalle = '<tbody>';
                         
                         foreach ($query as $query) {
-                            form_open(base_url('index.php/proyecto_isw/ver_inicio'));
-                            form_hidden('id_trabajo',$query->Id_Trabajo);
                         $detalle .= '
                             <tbody>
                                 <tr>
-                                    <td>  <td>
+                                    <td>'.$query->Id_Trabajo.'</td>
                                     <td>'.$query->Usuario.'</td>
                                     <td>'.$query->Descripcion.'</td>
                                     <td>'.$query->Fecha_Posteo.'</td>
                                 </tr>
                             </tbody>
                                 ';
-                        form_submit('Aceptar','Aceptar');
-                        form_close();
                         }
                         $detalle .= '<tbody>';
                         
