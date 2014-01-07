@@ -358,7 +358,7 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 $config['dirdoc_ws_url'] = 'http://informatica.utem.cl:8011/dirdoc-auth/ws/auth?wsdl';
-$config['dirdoc_ws_user'] = 'npaez!';
+$config['dirdoc_ws_user'] = 'npaez';
 $config['dirdoc_ws_password'] = 'cf3efda03d3f146ae8c18e98df4b1f69a3c78add';
 
 /* End of file config.php */

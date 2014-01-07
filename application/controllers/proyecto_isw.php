@@ -21,6 +21,9 @@ class Proyecto_isw extends CI_Controller {
     function ver_foro() {
         $this->load->view('foro');
     }
+    function crear_cuenta(){
+        $this->load->view('nueva_cuenta');
+    }
     function administrador_inicio() {
         if (!empty($this->session_id)) {
             $this->load->view('administrador/administrador_inicio');
@@ -462,6 +465,20 @@ class Proyecto_isw extends CI_Controller {
         } else {
             $this->load->view('welcome_message');
         }
+    }
+    function validar_dirdoc(){
+        if ($this->input->post()) {
+            $rut = $this->input->post('rut');
+            $pass = $this->input->post('pass');
+            $pass = strtoupper($pass);
+            $pass = hash ( "sha256", $pass );
+            if($this->ws_dirdoc->autenticar($rut,$pass) == TRUE){
+                $this->load->view('crear_nueva_cuenta');
+            }
+        } else {
+            $this->load->view('welcome_message');
+        }
+        
     }
     function validar_ingreso() {
 

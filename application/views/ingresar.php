@@ -53,6 +53,9 @@
                     <?= form_dropdown($permiso,$opciones)?><br><br>
                     <?= form_submit('login_entrar','Ingresar')?>
                 <?= form_close()?>
+                    <br><br>
+                    <a href="<?php echo base_url('index.php/proyecto_isw/crear_cuenta')?>">Crear Cuenta de Alumno</a>
+                    <br>
             </div>
         </section>
     </div>

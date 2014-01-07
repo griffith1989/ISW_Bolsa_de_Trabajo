@@ -48,18 +48,19 @@
                         $detalle = '<tbody>';
                         
                         foreach ($query as $query) {
-                            form_open(base_url('index.php/'));
+                            form_open(base_url('index.php/proyecto_isw/ver_inicio'));
                             form_hidden('id_trabajo',$query->Id_Trabajo);
                         $detalle .= '
                             <tbody>
                                 <tr>
-                                    <td>'.form_submit('Aceptar','Aceptar').'<td>
+                                    <td>  <td>
                                     <td>'.$query->Usuario.'</td>
                                     <td>'.$query->Descripcion.'</td>
                                     <td>'.$query->Fecha_Posteo.'</td>
                                 </tr>
                             </tbody>
                                 ';
+                        form_submit('Aceptar','Aceptar');
                         form_close();
                         }
                         $detalle .= '<tbody>';
