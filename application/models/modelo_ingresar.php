@@ -156,7 +156,7 @@ class Modelo_ingresar extends CI_Model {
         $this->db->insert("Usuarios",$usuarios);
     }
     function agregar_trabajo($datos = array()){
-        $this->db->insert("Vacantes", $datos);
+        $this->db->insert("Trabajo", $datos);
     }
     function agregar_foro($datos = array()){
         $this->db->insert("Foro",$datos);
